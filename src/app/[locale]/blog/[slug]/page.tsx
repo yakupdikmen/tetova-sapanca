@@ -76,7 +76,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
-            <span>← Tüm Rehberlere Dön</span>
+            <span>Tüm Rehberlere Dön</span>
           </Link>
 
           {/* Article Header */}

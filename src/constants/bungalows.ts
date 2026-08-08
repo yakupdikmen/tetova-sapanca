@@ -11,51 +11,53 @@ export interface Bungalow {
   tagline: string;
   subtitle?: string;
   categoryId: string;
+  price?: number;
   capacity: number; // Max guest count
   sqm: number; // Square meters size
   bedrooms: number;
   bathrooms: number;
-  rating: number;
+  rating: number; // Star rating e.g. 4.98
   reviewCount: number;
-  image: string;
-  gallery?: string[];
+  image: string; // Main card image URL
+  gallery: string[]; // Additional gallery image URLs
   location: string;
   amenities: string[];
   features?: string[];
-  featured: boolean;
+  featured?: boolean;
   isFeatured?: boolean;
 }
 
 export interface SearchFilterState {
   checkIn: string;
   checkOut: string;
-  guests: number;
-  categoryId: string;
+  category?: string;
+  categoryId?: string;
+  guests?: number;
 }
 
 export const BUNGALOW_CATEGORIES: BungalowCategory[] = [
   {
     id: "all",
-    name: "Tüm Evlerimiz",
-    description: "Tetova Sapanca'nın 4 seçkin konaklama seçeneği",
-    slug: "tum-bungalovlar",
+    name: "Tüm Bungalovlar",
+    description: "Tetova Sapanca'nın tüm lüks konaklama seçenekleri",
+    slug: "all",
   },
   {
     id: "platin",
     name: "Platin Villa",
-    description: "En lüks ısıtmalı havuzlu & şömineli VIP villa",
+    description: "4 Mevsim Isıtmalı Sonsuzluk Havuzlu VIP Villa",
     slug: "platin-villa",
   },
   {
     id: "gold",
     name: "Gold Bungalov",
-    description: "Özel ısıtmalı havuzlu & jakuzili konsept",
+    description: "Isıtmalı Havuzlu & Panoramik Göl Manzaralı",
     slug: "gold-bungalov",
   },
   {
     id: "silver",
     name: "Silver Bungalov",
-    description: "Doğa içi verandalı & jakuzili konforlu bungalov",
+    description: "Özel Jakuzili & Doğa İçi Verandalı",
     slug: "silver-bungalov",
   },
   {
@@ -87,6 +89,9 @@ export const MOCK_BUNGALOWS: Bungalow[] = [
       "/images/bungalows/platin-villa/4.jpeg",
       "/images/bungalows/platin-villa/5.jpeg",
       "/images/bungalows/platin-villa/6.jpeg",
+      "/images/bungalows/platin-villa/7.jpeg",
+      "/images/bungalows/platin-villa/8.jpeg",
+      "/images/bungalows/platin-villa/9.jpeg"
     ],
     location: "Kırkpınar Soğuksu, Sapanca",
     amenities: ["🔥 4 Mevsim Isıtmalı Havuz", "🛁 VIP Açık Hava Jakuzi", "🔥 Odun Şöminesi", "🌿 %100 Korumalı Özel Bahçe", "🍳 Serpme Köy Kahvaltısı"],
@@ -106,12 +111,17 @@ export const MOCK_BUNGALOWS: Bungalow[] = [
     bathrooms: 1,
     rating: 4.96,
     reviewCount: 62,
-    image: "/images/bungalows/gold-bungalov/1.jpg",
+    image: "/images/bungalows/gold-bungalov/1.jpeg",
     gallery: [
-      "/images/bungalows/gold-bungalov/1.jpg",
-      "/images/bungalows/gold-bungalov/2.jpg",
-      "/images/bungalows/gold-bungalov/3.jpg",
-      "/images/bungalows/gold-bungalov/4.jpg",
+      "/images/bungalows/gold-bungalov/1.jpeg",
+      "/images/bungalows/gold-bungalov/2.jpeg",
+      "/images/bungalows/gold-bungalov/3.jpeg",
+      "/images/bungalows/gold-bungalov/4.jpeg",
+      "/images/bungalows/gold-bungalov/5.jpeg",
+      "/images/bungalows/gold-bungalov/6.jpeg",
+      "/images/bungalows/gold-bungalov/7.jpeg",
+      "/images/bungalows/gold-bungalov/8.jpeg",
+      "/images/bungalows/gold-bungalov/9.jpeg",
     ],
     location: "Kırkpınar Soğuksu, Sapanca",
     amenities: ["🔥 Isıtmalı Havuz", "🛁 Jakuzi", "🍖 Özel Barbekü", "🌿 Geniş Çim Bahçe", "📶 Fiber Wi-Fi"],
@@ -131,12 +141,17 @@ export const MOCK_BUNGALOWS: Bungalow[] = [
     bathrooms: 1,
     rating: 4.93,
     reviewCount: 45,
-    image: "/images/bungalows/silver-bungalov/1.jpg",
+    image: "/images/bungalows/silver-bungalov/1.jpeg",
     gallery: [
-      "/images/bungalows/silver-bungalov/1.jpg",
-      "/images/bungalows/silver-bungalov/2.jpg",
-      "/images/bungalows/silver-bungalov/3.jpg",
-      "/images/bungalows/silver-bungalov/4.jpg",
+      "/images/bungalows/silver-bungalov/1.jpeg",
+      "/images/bungalows/silver-bungalov/2.jpeg",
+      "/images/bungalows/silver-bungalov/3.jpeg",
+      "/images/bungalows/silver-bungalov/4.jpeg",
+      "/images/bungalows/silver-bungalov/5.jpeg",
+      "/images/bungalows/silver-bungalov/6.jpeg",
+      "/images/bungalows/silver-bungalov/7.jpeg",
+      "/images/bungalows/silver-bungalov/8.jpeg",
+      "/images/bungalows/silver-bungalov/9.jpeg",
     ],
     location: "Kırkpınar Soğuksu, Sapanca",
     amenities: ["🛁 Özel Jakuzi", "🔥 Odun Şöminesi", "🌲 Orman Manzarası", "☕ Veranda & Dinlenme Alanı"],
@@ -156,12 +171,18 @@ export const MOCK_BUNGALOWS: Bungalow[] = [
     bathrooms: 1,
     rating: 4.90,
     reviewCount: 34,
-    image: "/images/bungalows/bronz-bungalov/1.jpg",
+    image: "/images/bungalows/bronz-bungalov/1.jpeg",
     gallery: [
-      "/images/bungalows/bronz-bungalov/1.jpg",
-      "/images/bungalows/bronz-bungalov/2.jpg",
-      "/images/bungalows/bronz-bungalov/3.jpg",
-      "/images/bungalows/bronz-bungalov/4.jpg",
+      "/images/bungalows/bronz-bungalov/1.jpeg",
+      "/images/bungalows/bronz-bungalov/2.jpeg",
+      "/images/bungalows/bronz-bungalov/3.jpeg",
+      "/images/bungalows/bronz-bungalov/4.jpeg",
+      "/images/bungalows/bronz-bungalov/5.jpeg",
+      "/images/bungalows/bronz-bungalov/6.jpeg",
+      "/images/bungalows/bronz-bungalov/7.jpeg",
+      "/images/bungalows/bronz-bungalov/8.jpeg",
+      "/images/bungalows/bronz-bungalov/9.jpeg",
+      "/images/bungalows/bronz-bungalov/10.jpeg",
     ],
     location: "Kırkpınar Soğuksu, Sapanca",
     amenities: ["🌿 Özel Bahçe", "🔥 Ateş Çukuru & Barbekü", "📶 Fiber Wi-Fi", "🚗 Özel Otopark"],

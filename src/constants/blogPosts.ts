@@ -24,10 +24,10 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
     readTime: "4 dk okuma",
     date: "24 Temmuz 2026",
     author: {
-      name: "Cenker Acar",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      name: "Tetova Sapanca",
+      avatar: "/images/bungalows/platin-villa/1.jpeg",
     },
-    coverImage: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/images/bungalows/platin-villa/5.jpeg",
     content: `
       <p>Marmara Bölgesi'nin en büyüleyici doğa kaçış noktalarından biri olan <strong>Sapanca</strong>, hem İstanbul'a hem de Kocaeli'ye yakınlığıyla hafta sonu tatillerinin vazgeçilmez rotası haline gelmiştir. Yeşilin her tonunu barındıran ormanları, durgun göl manzarası ve lüks konaklama seçenekleriyle unutulmaz bir deneyim sunmaktadır.</p>
       
@@ -57,10 +57,10 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
     readTime: "5 dk okuma",
     date: "18 Temmuz 2026",
     author: {
-      name: "Elif Karaca",
-      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
+      name: "Tetova Sapanca",
+      avatar: "/images/bungalows/gold-bungalov/1.jpeg",
     },
-    coverImage: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/images/bungalows/gold-bungalov/3.jpeg",
     content: `
       <p>Bungalov tatili denince akla ilk gelen konfor öğelerinden biri hiç şüphesiz <strong>özel ısıtmalı açık hava havuzlarıdır</strong>. Dört mevsim boyunca kesintisiz kullanılan bu sistemler, özellikle kış aylarında kar yağışını izlerken havuz keyfi yapma imkanı tanır.</p>
 
@@ -68,7 +68,7 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
       <p>Özel havuz ısı pompaları ve jeotermal takviyeler sayesinde su sıcaklığı otomatik olarak 32°C - 34°C arasında sabit tutulur. Dışarıdaki hava sıcaklığı sıfırın altına düşse bile suyun sıcaklığı korunur.</p>
 
       <h2>Tam Mahremiyet & Korumalı Bahçe Alanı</h2>
-      <p>Bungalovlarımızın etrafı yüksek ahşap çitler ve sarmaşıklar ile kapatılarak dısarıdan görünmeyecek şekilde izole edilmiştir. Muhafazakar aileler ve gözlerden uzak romantik kaçamaklar için %100 korumalı bir alan sunulmaktadır.</p>
+      <p>Bungalovlarımızın etrafı yüksek ahşap çitler ve sarmaşıklar ile kapatılarak dışarıdan görünmeyecek şekilde izole edilmiştir. Muhafazakar aileler ve gözlerden uzak romantik kaçamaklar için %100 korumalı bir alan sunulmaktadır.</p>
 
       <h2>Bungalov Tatilinde Yanınıza Almanız Gerekenler</h2>
       <ul>
@@ -87,10 +87,10 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
     readTime: "3 dk okuma",
     date: "12 Temmuz 2026",
     author: {
-      name: "Mert Yılmaz",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      name: "Tetova Sapanca",
+      avatar: "/images/bungalows/silver-bungalov/1.jpeg",
     },
-    coverImage: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/images/bungalows/silver-bungalov/3.jpeg",
     content: `
       <p>Sapanca sadece doğasıyla değil, zengin mutfak kültürü ve zengin serpme kahvaltı mekanlarıyla da gurmelerin ilgisini çekmektedir.</p>
 

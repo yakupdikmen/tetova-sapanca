@@ -40,11 +40,24 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
 }) => {
   const { t, language } = useLanguage();
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [dynamicGallery, setDynamicGallery] = useState<string[]>([]);
 
-  // Reset active index when bungalow changes or opens
+  // Fetch dynamic gallery images from /api/bungalows/gallery on bungalow select
   useEffect(() => {
     if (selectedBungalow) {
       setActiveIndex(0);
+      setDynamicGallery(selectedBungalow.gallery || [selectedBungalow.image]);
+
+      fetch(`/api/bungalows/gallery?id=${selectedBungalow.id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.images && data.images.length > 0) {
+            setDynamicGallery(data.images);
+          }
+        })
+        .catch((err) => {
+          console.warn("Could not fetch dynamic gallery, using static gallery.", err);
+        });
     }
   }, [selectedBungalow]);
 
@@ -96,9 +109,9 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
     return selectedBungalow.tagline;
   };
 
-  const galleryImages = selectedBungalow.gallery?.length
-    ? selectedBungalow.gallery
-    : [selectedBungalow.image];
+  const galleryImages = dynamicGallery.length > 0
+    ? dynamicGallery
+    : (selectedBungalow.gallery?.length ? selectedBungalow.gallery : [selectedBungalow.image]);
 
   const fanCards: SocialCardItem[] = galleryImages.map((imgUrl, idx) => ({
     id: `detail-fan-${idx}`,
@@ -266,7 +279,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
               </div>
             </div>
 
-            {/* Bottom Bar: Booking Action */}
+            {/* Bottom Bar: Specs & Booking Action */}
             <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-6">
               {/* Specs & Amenities Tags */}
               <div className="flex flex-col gap-3">
@@ -300,7 +313,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                   onClick={handleWhatsAppBooking}
                   className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-sm tracking-wide shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <span>{t("bungalows.modal.instantBook")}</span>
+                  <span>{t("bungalows.bookNow")}</span>
                   <ArrowRight className="w-4 h-4 rtl:rotate-180" />
                 </motion.button>
               </div>

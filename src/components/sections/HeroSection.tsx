@@ -71,14 +71,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     }));
   };
 
-  const getCategoryName = (catId: string) => {
+  const getCategoryName = (catId: string = "all") => {
     if (catId === "all") return t("hero.allTypes");
     return t(`bungalows.categories.${catId}`) || catId;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const categoryName = getCategoryName(searchFilters.categoryId);
+    const categoryName = getCategoryName(searchFilters.categoryId || "all");
 
     let waText = "";
     if (language === "ar") {
@@ -101,8 +101,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Background Image & Cinematic Gradient Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=2000&q=85"
-          alt="Sapanca Lüks Bungalov Manzarası"
+          src="/images/bungalows/platin-villa/1.jpeg"
+          alt="Tetova Sapanca VIP Bungalov Manzarası"
           className="w-full h-full object-cover object-center scale-105 filter brightness-[0.6] contrast-105"
         />
         {/* Full-bleed Smooth Gradient Overlay */}
