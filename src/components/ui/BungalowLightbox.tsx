@@ -217,26 +217,14 @@ export const BungalowLightbox: React.FC<BungalowLightboxProps> = ({
                 </div>
               </div>
 
-              {/* Price & CTA Footer */}
+              {/* CTA Footer */}
               <div className="pt-6 border-t border-white/10 mt-6 flex flex-col gap-4">
-                <div className="flex items-baseline justify-between">
-                  <span className="text-xs text-slate-400 uppercase tracking-wider">
-                    Gecelik Konaklama
-                  </span>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-2xl font-black text-white">
-                      ₺{selectedBungalow.price.toLocaleString("tr-TR")}
-                    </span>
-                    <span className="text-xs text-slate-400">/ gece</span>
-                  </div>
-                </div>
-
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   transition={SPRING_TRANSITION}
                   onClick={() => {
-                    openWhatsApp(`Merhaba, Tetova Sapanca ${selectedBungalow.title} detaylarını inceledim.\n\n🏡 *Seçilen Ev:* ${selectedBungalow.title}\n💰 *Gecelik Fiyat:* ₺${selectedBungalow.price.toLocaleString("tr-TR")}\n👥 *Kapasite:* ${selectedBungalow.capacity} Misafir\n\nRezervasyon ve müsaitlik teyidi almak istiyorum.`);
+                    openWhatsApp(`Merhaba, Tetova Sapanca ${selectedBungalow.title} detaylarını inceledim.\n\n🏡 *Seçilen Ev:* ${selectedBungalow.title}\n👥 *Kapasite:* ${selectedBungalow.capacity} Misafir\n\nRezervasyon ve müsaitlik teyidi almak istiyorum.`);
                     if (onBookNow) onBookNow(selectedBungalow);
                     onClose();
                   }}

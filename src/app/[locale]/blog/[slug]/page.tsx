@@ -1,26 +1,31 @@
 import React from "react";
-import Metadata from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Clock, ArrowLeft, Sparkles, Calendar, ArrowRight, ShieldCheck } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { MOCK_BLOG_POSTS } from "@/constants/blogPosts";
+import { SUPPORTED_LOCALES, isLocale, localizedPath, type Locale } from "@/utils/locale";
 
 interface BlogDetailPageProps {
   params: Promise<{
+    locale: string;
     slug: string;
   }>;
 }
 
 export async function generateStaticParams() {
-  return MOCK_BLOG_POSTS.map((post) => ({
-    slug: post.slug,
-  }));
+  return SUPPORTED_LOCALES.flatMap((locale) =>
+    MOCK_BLOG_POSTS.map((post) => ({
+      locale,
+      slug: post.slug,
+    }))
+  );
 }
 
 export async function generateMetadata({ params }: BlogDetailPageProps) {
   const resolvedParams = await params;
+  const locale: Locale = isLocale(resolvedParams.locale) ? resolvedParams.locale : "tr";
   const post = MOCK_BLOG_POSTS.find((p) => p.slug === resolvedParams.slug);
 
   if (!post) {
@@ -29,12 +34,18 @@ export async function generateMetadata({ params }: BlogDetailPageProps) {
     };
   }
 
+  const canonicalPath = localizedPath(locale, `/blog/${post.slug}`);
+
   return {
     title: `${post.title} | Tetova Sapanca Rehber`,
     description: post.excerpt,
+    alternates: {
+      canonical: canonicalPath,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
+      url: canonicalPath,
       images: [{ url: post.coverImage }],
     },
   };
@@ -42,6 +53,10 @@ export async function generateMetadata({ params }: BlogDetailPageProps) {
 
 export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   const resolvedParams = await params;
+  if (!isLocale(resolvedParams.locale)) {
+    notFound();
+  }
+  const locale = resolvedParams.locale;
   const post = MOCK_BLOG_POSTS.find((p) => p.slug === resolvedParams.slug);
 
   if (!post) {
@@ -57,7 +72,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         <div className="max-w-4xl mx-auto">
           {/* Back Link */}
           <Link
-            href="/#blog"
+            href={localizedPath(locale, "/#blog")}
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
@@ -126,12 +141,12 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                 Tetova Sapanca'da Hayalinizdeki Tatili Yaşayın
               </h3>
               <p className="text-xs sm:text-sm text-slate-300">
-                Isıtmalı özel havuzlu VIP bungalov seçkilerini inceleyin, anında fiyat simülasyonu yapın.
+                Isıtmalı özel havuzlu VIP bungalov seçkilerini inceleyin, hemen rezervasyon talebinde bulunun.
               </p>
             </div>
 
             <Link
-              href="/#bungalows"
+              href={localizedPath(locale, "/#bungalows")}
               className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-sm tracking-wide shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all duration-300 flex items-center gap-2 flex-shrink-0"
             >
               <span>Bungalovları İncele</span>

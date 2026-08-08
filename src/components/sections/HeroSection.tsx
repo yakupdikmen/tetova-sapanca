@@ -82,11 +82,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
     let waText = "";
     if (language === "ar") {
-      waText = `مرحباً، أبحث عن حجز عبر موقع تيتوفا صبانجة الإلكتروني.\n\n🏡 *نوع الإقامة:* ${categoryName}\n📅 *تاريخ الوصول:* ${searchFilters.checkIn}\n📅 *تاريخ المغادرة:* ${searchFilters.checkOut}\n\nهل يمكنني الحصول على معلومات التوفر والأسعار؟`;
+      waText = `مرحباً، أبحث عن حجز عبر موقع تيتوفا صبانجة الإلكتروني.\n\n🏡 *نوع الإقامة:* ${categoryName}\n📅 *تاريخ الوصول:* ${searchFilters.checkIn}\n📅 *تاريخ المغادرة:* ${searchFilters.checkOut}\n\nهل يمكنني الحصول على معلومات التوفر؟`;
     } else if (language === "en") {
-      waText = `Hello, I made a search on the Tetova Sapanca website.\n\n🏡 *Accommodation Type:* ${categoryName}\n📅 *Check-in Date:* ${searchFilters.checkIn}\n📅 *Check-out Date:* ${searchFilters.checkOut}\n\nCould I please get availability and price details?`;
+      waText = `Hello, I made a search on the Tetova Sapanca website.\n\n🏡 *Accommodation Type:* ${categoryName}\n📅 *Check-in Date:* ${searchFilters.checkIn}\n📅 *Check-out Date:* ${searchFilters.checkOut}\n\nCould I please get availability details?`;
     } else {
-      waText = `Merhaba, Tetova Sapanca web sitenizden arama yaptım.\n\n🏡 *Konaklama Türü:* ${categoryName}\n📅 *Giriş Tarihi:* ${searchFilters.checkIn}\n📅 *Çıkış Tarihi:* ${searchFilters.checkOut}\n\nMüsaitlik durumu ve fiyat bilgisi alabilir miyim?`;
+      waText = `Merhaba, Tetova Sapanca web sitenizden arama yaptım.\n\n🏡 *Konaklama Türü:* ${categoryName}\n📅 *Giriş Tarihi:* ${searchFilters.checkIn}\n📅 *Çıkış Tarihi:* ${searchFilters.checkOut}\n\nMüsaitlik durumu hakkında bilgi alabilir miyim?`;
     }
 
     openWhatsApp(waText);

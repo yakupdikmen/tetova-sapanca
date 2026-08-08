@@ -11,8 +11,6 @@ export interface Bungalow {
   tagline: string;
   subtitle?: string;
   categoryId: string;
-  price: number; // Price per night in TRY
-  basePrice?: number;
   capacity: number; // Max guest count
   sqm: number; // Square meters size
   bedrooms: number;
@@ -26,15 +24,6 @@ export interface Bungalow {
   features?: string[];
   featured: boolean;
   isFeatured?: boolean;
-}
-
-export interface ExtraService {
-  id: string;
-  title: string;
-  description: string;
-  price: number;
-  perNight: boolean;
-  icon: string;
 }
 
 export interface SearchFilterState {
@@ -84,20 +73,20 @@ export const MOCK_BUNGALOWS: Bungalow[] = [
     tagline: "Tetova Sapanca'nın En Lüks Isıtmalı Havuzlu & Jakuzili VIP Malikane Villası",
     subtitle: "Özel Isıtmalı Sonsuzluk Havuzlu & Şömineli Platin Villa",
     categoryId: "platin",
-    price: 10500,
-    basePrice: 10500,
     capacity: 6,
     sqm: 150,
     bedrooms: 3,
     bathrooms: 2,
     rating: 4.99,
     reviewCount: 88,
-    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/bungalows/platin-villa/1.jpeg",
     gallery: [
-      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=1200&q=80",
+      "/images/bungalows/platin-villa/1.jpeg",
+      "/images/bungalows/platin-villa/2.jpeg",
+      "/images/bungalows/platin-villa/3.jpeg",
+      "/images/bungalows/platin-villa/4.jpeg",
+      "/images/bungalows/platin-villa/5.jpeg",
+      "/images/bungalows/platin-villa/6.jpeg",
     ],
     location: "Kırkpınar Soğuksu, Sapanca",
     amenities: ["🔥 4 Mevsim Isıtmalı Havuz", "🛁 VIP Açık Hava Jakuzi", "🔥 Odun Şöminesi", "🌿 %100 Korumalı Özel Bahçe", "🍳 Serpme Köy Kahvaltısı"],
@@ -111,19 +100,18 @@ export const MOCK_BUNGALOWS: Bungalow[] = [
     tagline: "Isıtmalı Havuzlu & Panoramik Göl Manzaralı Gold Konsept Bungalov",
     subtitle: "Özel Isıtmalı Havuzlu & Jakuzili Gold Bungalov",
     categoryId: "gold",
-    price: 7500,
-    basePrice: 7500,
     capacity: 4,
     sqm: 110,
     bedrooms: 2,
     bathrooms: 1,
     rating: 4.96,
     reviewCount: 62,
-    image: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/bungalows/gold-bungalov/1.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
+      "/images/bungalows/gold-bungalov/1.jpg",
+      "/images/bungalows/gold-bungalov/2.jpg",
+      "/images/bungalows/gold-bungalov/3.jpg",
+      "/images/bungalows/gold-bungalov/4.jpg",
     ],
     location: "Kırkpınar Soğuksu, Sapanca",
     amenities: ["🔥 Isıtmalı Havuz", "🛁 Jakuzi", "🍖 Özel Barbekü", "🌿 Geniş Çim Bahçe", "📶 Fiber Wi-Fi"],
@@ -137,19 +125,18 @@ export const MOCK_BUNGALOWS: Bungalow[] = [
     tagline: "Özel Jakuzili & Doğa İçi Verandalı Silver Konsept Bungalov",
     subtitle: "Doğa İle Baş Başa Jakuzili Silver Bungalov",
     categoryId: "silver",
-    price: 5500,
-    basePrice: 5500,
     capacity: 3,
     sqm: 85,
     bedrooms: 1,
     bathrooms: 1,
     rating: 4.93,
     reviewCount: 45,
-    image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/bungalows/silver-bungalov/1.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&w=1200&q=80",
+      "/images/bungalows/silver-bungalov/1.jpg",
+      "/images/bungalows/silver-bungalov/2.jpg",
+      "/images/bungalows/silver-bungalov/3.jpg",
+      "/images/bungalows/silver-bungalov/4.jpg",
     ],
     location: "Kırkpınar Soğuksu, Sapanca",
     amenities: ["🛁 Özel Jakuzi", "🔥 Odun Şöminesi", "🌲 Orman Manzarası", "☕ Veranda & Dinlenme Alanı"],
@@ -163,18 +150,18 @@ export const MOCK_BUNGALOWS: Bungalow[] = [
     tagline: "Sıcak & Samimi Doğa Konseptli Bronz Bungalov",
     subtitle: "Konforlu & Huzurlu Konaklama Sunan Bronz Bungalov",
     categoryId: "bronz",
-    price: 4000,
-    basePrice: 4000,
     capacity: 2,
     sqm: 65,
     bedrooms: 1,
     bathrooms: 1,
     rating: 4.90,
     reviewCount: 34,
-    image: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/bungalows/bronz-bungalov/1.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&w=1200&q=80",
+      "/images/bungalows/bronz-bungalov/1.jpg",
+      "/images/bungalows/bronz-bungalov/2.jpg",
+      "/images/bungalows/bronz-bungalov/3.jpg",
+      "/images/bungalows/bronz-bungalov/4.jpg",
     ],
     location: "Kırkpınar Soğuksu, Sapanca",
     amenities: ["🌿 Özel Bahçe", "🔥 Ateş Çukuru & Barbekü", "📶 Fiber Wi-Fi", "🚗 Özel Otopark"],

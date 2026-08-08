@@ -40,7 +40,7 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
   bungalow = MOCK_BUNGALOWS[0],
   onBookNow,
 }) => {
-  const { t, formatPrice, language } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeScene, setActiveScene] = useState<string>("veranda");
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [showDragPrompt, setShowDragPrompt] = useState<boolean>(true);
@@ -251,14 +251,6 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
                       <h4 className="text-xs sm:text-sm font-bold text-white truncate">
                         {getBungalowTitle(displayBungalow)}
                       </h4>
-                      <div className="flex items-baseline gap-1 mt-0.5">
-                        <span className="text-base font-extrabold text-emerald-400">
-                          {formatPrice(displayBungalow.price)}
-                        </span>
-                        <span className="text-[11px] text-slate-400 font-normal">
-                          / {t("bungalows.perNight")}
-                        </span>
-                      </div>
                     </div>
                   </div>
 
@@ -269,15 +261,14 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
                     type="button"
                     onClick={() => {
                       const bungalowName = getBungalowTitle(displayBungalow);
-                      const formattedP = formatPrice(displayBungalow.price);
 
                       let waText = "";
                       if (language === "ar") {
-                        waText = `مرحباً، أتواصل معكم من صفحة الجولة الافتراضية 360° لـ تيتوفا صبانجة.\n\n🏡 *المنزل المعاين:* ${bungalowName}\n💰 *السعر لليلة:* ${formattedP}\n\nأود الحصول على معلومات التوفر والحجز لهذا البنغل.`;
+                        waText = `مرحباً، أتواصل معكم من صفحة الجولة الافتراضية 360° لـ تيتوفا صبانجة.\n\n🏡 *المنزل المعاين:* ${bungalowName}\n\nأود الحصول على معلومات التوفر والحجز لهذا البنغل.`;
                       } else if (language === "en") {
-                        waText = `Hello, I'm reaching out from the 360° Virtual Tour page of Tetova Sapanca.\n\n🏡 *Inspected Home:* ${bungalowName}\n💰 *Price per Night:* ${formattedP}\n\nI would like to get availability and pricing information for this bungalow.`;
+                        waText = `Hello, I'm reaching out from the 360° Virtual Tour page of Tetova Sapanca.\n\n🏡 *Inspected Home:* ${bungalowName}\n\nI would like to get availability and booking information for this bungalow.`;
                       } else {
-                        waText = `Merhaba, Tetova Sapanca 360° Sanal Tur sayfanızdan ulaşıyorum.\n\n🏡 *İncelenen Ev:* ${bungalowName}\n💰 *Gecelik Fiyat:* ${formattedP}\n\nBu bungalov için müsaitlik durumu ve fiyat bilgisi almak istiyorum.`;
+                        waText = `Merhaba, Tetova Sapanca 360° Sanal Tur sayfanızdan ulaşıyorum.\n\n🏡 *İncelenen Ev:* ${bungalowName}\n\nBu bungalov için müsaitlik durumu bilgisi almak istiyorum.`;
                       }
 
                       openWhatsApp(waText);

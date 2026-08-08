@@ -43,7 +43,7 @@ export const BungalowCard: React.FC<BungalowCardProps> = ({
   onOpenVirtualTour,
   className = "",
 }) => {
-  const { t, formatPrice, language } = useLanguage();
+  const { t, language } = useLanguage();
 
   const handleCardClick = () => {
     if (onSelect) {
@@ -158,18 +158,8 @@ export const BungalowCard: React.FC<BungalowCardProps> = ({
           ))}
         </div>
 
-        {/* Price & Action Button Footer */}
-        <div className="flex items-center justify-between pt-4 border-t border-white/10 mt-2">
-          <div>
-            <span className="text-xs text-slate-300 uppercase tracking-wider block">{t("bungalows.nightlyPrice")}</span>
-            <div className="flex items-baseline gap-1">
-              <span className="text-xl sm:text-2xl font-extrabold text-white">
-                {formatPrice(bungalow.price)}
-              </span>
-              <span className="text-xs text-slate-300 font-normal">/ {t("bungalows.perNight")}</span>
-            </div>
-          </div>
-
+        {/* Action Button Footer */}
+        <div className="flex items-center justify-end pt-4 border-t border-white/10 mt-2">
           <button
             type="button"
             onClick={(e) => {

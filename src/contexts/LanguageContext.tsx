@@ -1,7 +1,9 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { translations, TranslationKey, Language } from "@/i18n/translations";
+import React, { createContext, useContext, ReactNode } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import { translations, Language } from "@/i18n/translations";
+import { localizedPath, stripLocalePrefix } from "@/utils/locale";
 
 interface LanguageContextType {
   language: Language;
@@ -9,43 +11,25 @@ interface LanguageContextType {
   t: (keyPath: string) => string;
   dir: "ltr" | "rtl";
   isRtl: boolean;
-  formatPrice: (priceTRY: number) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-const STORAGE_KEY = "tetova_sapanca_lang";
+export const LanguageProvider: React.FC<{ children: ReactNode; locale: Language }> = ({
+  children,
+  locale,
+}) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const language = locale;
 
-export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<Language>("tr");
-
-  // Load language from localStorage or default to browser language
-  useEffect(() => {
-    const savedLang = localStorage.getItem(STORAGE_KEY) as Language | null;
-    if (savedLang && (savedLang === "tr" || savedLang === "en" || savedLang === "ar")) {
-      setLanguageState(savedLang);
-    } else {
-      const browserLang = navigator.language.toLowerCase();
-      if (browserLang.startsWith("ar")) {
-        setLanguageState("ar");
-      } else if (browserLang.startsWith("en")) {
-        setLanguageState("en");
-      } else {
-        setLanguageState("tr");
-      }
-    }
-  }, []);
-
+  // The URL is the single source of truth for the active language: switching
+  // navigates to the /en, /ar (or unprefixed for tr) equivalent of the
+  // current path, so the choice is crawlable and shareable, not just local.
   const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    localStorage.setItem(STORAGE_KEY, lang);
+    const pathWithoutLocale = stripLocalePrefix(pathname);
+    router.push(localizedPath(lang, pathWithoutLocale));
   };
-
-  // Update HTML lang and dir attributes dynamically for SEO & RTL
-  useEffect(() => {
-    document.documentElement.lang = language;
-    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
-  }, [language]);
 
   // Dynamic nested key translation resolver (e.g. t("hero.title"))
   const t = (keyPath: string): string => {
@@ -75,19 +59,6 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   const isRtl = language === "ar";
   const dir = isRtl ? "rtl" : "ltr";
 
-  // Dynamic currency converter for preview display
-  const formatPrice = (priceTRY: number): string => {
-    if (language === "ar") {
-      const priceSAR = Math.round(priceTRY / 9.5); // Approx TRY to SAR rate
-      return `${priceSAR.toLocaleString("ar-SA")} ر.س`;
-    }
-    if (language === "en") {
-      const priceUSD = Math.round(priceTRY / 36); // Approx TRY to USD rate
-      return `$${priceUSD.toLocaleString("en-US")}`;
-    }
-    return `₺${priceTRY.toLocaleString("tr-TR")}`;
-  };
-
   return (
     <LanguageContext.Provider
       value={{
@@ -96,7 +67,6 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
         t,
         dir,
         isRtl,
-        formatPrice,
       }}
     >
       {children}

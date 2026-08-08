@@ -126,7 +126,7 @@ export const GOOGLE_REVIEWS: GoogleReview[] = [
     authorAvatar: "",
     rating: 5,
     dateText: "2 ay önce",
-    reviewText: "Sitedeki rezervasyon hesaplayıcı ile tuttuğumuz fiyatın birebir aynı çıkması da güven verdi. Göründüğünden çok daha kaliteli bir işletme.",
+    reviewText: "WhatsApp üzerinden yaptığımız rezervasyon süreci çok hızlı ve şeffaftı, güven verdi. Göründüğünden çok daha kaliteli bir işletme.",
     verified: true,
     googleReviewUrl: "https://maps.google.com",
   },

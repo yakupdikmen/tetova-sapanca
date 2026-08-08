@@ -6,6 +6,7 @@ import { motion, Variants } from "framer-motion";
 import { Clock, ArrowRight, Sparkles, BookOpen } from "lucide-react";
 import { BlogPost, MOCK_BLOG_POSTS } from "@/constants/blogPosts";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { localizedPath } from "@/utils/locale";
 
 export interface BlogCardProps {
   post: BlogPost;
@@ -42,7 +43,8 @@ const cardVariants: Variants = {
 };
 
 export const BlogCard: React.FC<BlogCardProps> = ({ post, className = "" }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const postHref = localizedPath(language, `/blog/${post.slug}`);
 
   return (
     <motion.article
@@ -53,7 +55,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, className = "" }) => {
     >
       <div>
         {/* Cover Image Container with Hover Zoom */}
-        <Link href={`/blog/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden bg-slate-950">
+        <Link href={postHref} className="block relative aspect-[16/10] overflow-hidden bg-slate-950">
           <motion.img
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -85,7 +87,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, className = "" }) => {
           </div>
 
           {/* Title (H3 for SEO) */}
-          <Link href={`/blog/${post.slug}`}>
+          <Link href={postHref}>
             <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight leading-snug group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition-colors line-clamp-2">
               {post.title}
             </h3>
@@ -112,7 +114,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, className = "" }) => {
         </div>
 
         <Link
-          href={`/blog/${post.slug}`}
+          href={postHref}
           className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 dark:hover:text-emerald-300 transition-colors cursor-pointer"
         >
           <span>{t("blog.readArticle")}</span>

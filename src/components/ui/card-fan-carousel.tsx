@@ -2,7 +2,6 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
-import { Sparkles, Heart } from "lucide-react";
 
 export interface SocialCardItem {
   id: string | number;
@@ -111,40 +110,6 @@ export const SocialCards: React.FC<SocialCardsProps> = ({
                   alt={card.title}
                   className="w-full h-full object-cover filter brightness-[0.8] transition-all duration-500"
                 />
-
-                {/* Top Badge */}
-                {card.tag && (
-                  <div className="absolute top-3 left-3 z-10">
-                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-slate-950/70 border border-white/15 text-emerald-400 text-xs font-semibold shadow-md">
-                      <Sparkles className="w-3.5 h-3.5" />
-                      {card.tag}
-                    </span>
-                  </div>
-                )}
-
-                {/* Bottom Card Content */}
-                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent flex flex-col justify-end">
-                  <h4 className="text-sm sm:text-base font-bold text-white tracking-tight leading-snug">
-                    {card.title}
-                  </h4>
-                  {card.subtitle && (
-                    <p className="text-[11px] sm:text-xs text-slate-300 mt-1 line-clamp-1 font-normal">
-                      {card.subtitle}
-                    </p>
-                  )}
-
-                  {card.likes && (
-                    <div className="flex items-center justify-between mt-2.5 pt-2 border-t border-white/10 text-xs text-slate-400">
-                      <span className="flex items-center gap-1 text-rose-400 font-medium">
-                        <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
-                        {card.likes} Beğeni
-                      </span>
-                      <span className="text-[10px] sm:text-[11px] text-emerald-400 font-semibold">
-                        Görsele Git →
-                      </span>
-                    </div>
-                  )}
-                </div>
               </div>
             </div>
           );

@@ -100,14 +100,15 @@ export const Navbar: React.FC = () => {
 
           <a
             href="tel:+905337182524"
-            className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border font-medium text-xs sm:text-sm backdrop-blur-md transition-all duration-300 shadow-md ${
+            aria-label={t("nav.callUs")}
+            title={t("nav.callUs")}
+            className={`inline-flex items-center justify-center w-10 h-10 rounded-xl border backdrop-blur-md transition-all duration-300 shadow-md ${
               isScrolled
                 ? "bg-slate-900/10 dark:bg-white/10 border-black/5 dark:border-white/15 text-slate-900 dark:text-white"
                 : "bg-white/15 border-white/20 text-white hover:bg-white/25"
             }`}
           >
             <Phone className="w-4 h-4 text-emerald-400" />
-            <span>+90 (533) 718 25 24</span>
           </a>
         </div>
 
@@ -170,7 +171,7 @@ export const Navbar: React.FC = () => {
             className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-emerald-600 text-white font-semibold text-sm mt-2"
           >
             <Phone className="w-4 h-4" />
-            <span>+90 (533) 718 25 24</span>
+            <span>{t("nav.callUs")}</span>
           </a>
         </div>
       )}

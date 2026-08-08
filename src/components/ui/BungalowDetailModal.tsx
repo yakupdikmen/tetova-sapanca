@@ -38,7 +38,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
   onClose,
   onBookNow,
 }) => {
-  const { t, formatPrice, language } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   // Reset active index when bungalow changes or opens
@@ -103,10 +103,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
   const fanCards: SocialCardItem[] = galleryImages.map((imgUrl, idx) => ({
     id: `detail-fan-${idx}`,
     title: `${getLocalizedTitle()} - ${idx + 1}`,
-    subtitle: getLocalizedTagline(),
     image: imgUrl,
-    tag: idx === 0 ? "Main View" : `Photo ${idx + 1}`,
-    likes: 450 + idx * 120,
   }));
 
   const handlePrev = () => {
@@ -119,15 +116,14 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
 
   const handleWhatsAppBooking = () => {
     const bTitle = getLocalizedTitle();
-    const formattedP = formatPrice(selectedBungalow.price);
 
     let waText = "";
     if (language === "ar") {
-      waText = `مرحباً، أود الحصول على معلومات وحجز ${bTitle} عبر تيتوفا صبانجة.\n\n🏡 *نوع البنغل:* ${bTitle}\n💰 *السعر لليلة:* ${formattedP}\n👥 *السعة:* ${selectedBungalow.capacity} ضيوف\n\nهل يمكنني معرفة التوفر والتواريخ المتاحة؟`;
+      waText = `مرحباً، أود الحصول على معلومات وحجز ${bTitle} عبر تيتوفا صبانجة.\n\n🏡 *نوع البنغل:* ${bTitle}\n👥 *السعة:* ${selectedBungalow.capacity} ضيوف\n\nهل يمكنني معرفة التوفر والتواريخ المتاحة؟`;
     } else if (language === "en") {
-      waText = `Hello, I would like to get information and book ${bTitle} at Tetova Sapanca.\n\n🏡 *Bungalow Type:* ${bTitle}\n💰 *Price per Night:* ${formattedP}\n👥 *Capacity:* ${selectedBungalow.capacity} Guests\n\nCould you please let me know availability and suitable dates?`;
+      waText = `Hello, I would like to get information and book ${bTitle} at Tetova Sapanca.\n\n🏡 *Bungalow Type:* ${bTitle}\n👥 *Capacity:* ${selectedBungalow.capacity} Guests\n\nCould you please let me know availability and suitable dates?`;
     } else {
-      waText = `Merhaba, Tetova Sapanca ${bTitle} hakkında bilgi alıp rezervasyon yaptırmak istiyorum.\n\n🏡 *Bungalov Tipi:* ${bTitle}\n💰 *Gecelik Fiyat:* ${formattedP}\n👥 *Kapasite:* ${selectedBungalow.capacity} Misafir\n\nMüsaitlik durumunu ve uygun tarihleri öğrenebilir miyim?`;
+      waText = `Merhaba, Tetova Sapanca ${bTitle} hakkında bilgi alıp rezervasyon yaptırmak istiyorum.\n\n🏡 *Bungalov Tipi:* ${bTitle}\n👥 *Kapasite:* ${selectedBungalow.capacity} Misafir\n\nMüsaitlik durumunu ve uygun tarihleri öğrenebilir miyim?`;
     }
 
     openWhatsApp(waText);
@@ -270,7 +266,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
               </div>
             </div>
 
-            {/* Bottom Bar: Price & Booking Action */}
+            {/* Bottom Bar: Booking Action */}
             <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-6">
               {/* Specs & Amenities Tags */}
               <div className="flex flex-col gap-3">
@@ -295,20 +291,8 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                 </div>
               </div>
 
-              {/* Price & Glowing CTA Button */}
-              <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
-                <div>
-                  <span className="text-[11px] text-slate-400 uppercase tracking-wider block">
-                    {t("bungalows.nightlyPrice")}
-                  </span>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-2xl font-black text-white">
-                      {formatPrice(selectedBungalow.price)}
-                    </span>
-                    <span className="text-xs text-slate-400">/ {t("bungalows.perNight")}</span>
-                  </div>
-                </div>
-
+              {/* Glowing CTA Button */}
+              <div className="flex items-center gap-4 w-full sm:w-auto justify-end">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
