@@ -15,6 +15,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Bungalow } from "@/constants/bungalows";
+import { openWhatsApp } from "@/utils/whatsapp";
 
 export interface BungalowLightboxProps {
   selectedBungalow: Bungalow | null;
@@ -235,12 +236,13 @@ export const BungalowLightbox: React.FC<BungalowLightboxProps> = ({
                   whileTap={{ scale: 0.98 }}
                   transition={SPRING_TRANSITION}
                   onClick={() => {
+                    openWhatsApp(`Merhaba, Tetova Sapanca ${selectedBungalow.title} detaylarını inceledim.\n\n🏡 *Seçilen Ev:* ${selectedBungalow.title}\n💰 *Gecelik Fiyat:* ₺${selectedBungalow.price.toLocaleString("tr-TR")}\n👥 *Kapasite:* ${selectedBungalow.capacity} Misafir\n\nRezervasyon ve müsaitlik teyidi almak istiyorum.`);
                     if (onBookNow) onBookNow(selectedBungalow);
                     onClose();
                   }}
                   className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-sm tracking-wide shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <span>Hemen Rezerve Et</span>
+                  <span>WhatsApp ile Rezerve Et</span>
                   <ArrowRight className="w-4 h-4" />
                 </motion.button>
               </div>

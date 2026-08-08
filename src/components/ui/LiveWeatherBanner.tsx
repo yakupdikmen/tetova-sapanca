@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Sun, CloudRain, Cloud, Snowflake, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export interface LiveWeatherBannerProps {
   onCtaClick?: () => void;
@@ -20,6 +21,7 @@ export const LiveWeatherBanner: React.FC<LiveWeatherBannerProps> = ({
   onCtaClick,
   className = "",
 }) => {
+  const { t, language } = useLanguage();
   const [weather, setWeather] = useState<WeatherState>({
     temp: 18,
     condition: "sunny",
@@ -102,6 +104,36 @@ export const LiveWeatherBanner: React.FC<LiveWeatherBannerProps> = ({
     }
   };
 
+  const getHeadlineText = () => {
+    if (language === "ar") {
+      return isCoolOrRainy ? "الطقس ممطر ومنعش في صبانجة 🌧️" : "الشمس مشرقة والطبيعة ساحرة في صبانجة ☀️";
+    }
+    if (language === "en") {
+      return isCoolOrRainy ? "Rainy & Refreshing Weather in Sapanca 🌧️" : "Beautiful Sunny Nature in Sapanca ☀️";
+    }
+    return isCoolOrRainy ? "Sapanca'da Yağmurlu & Serin Bir Hava Var 🌧️" : "Sapanca'da Harika Bir Doğa Güneşi ☀️";
+  };
+
+  const getSubtext = () => {
+    if (language === "ar") {
+      return isCoolOrRainy ? "استمتع بيوم لا يُنسى بجوار المسبح الدافئ والمدفأة المشتعلة." : "اكتشف خياراتنا المزودة بجاكوزي خارجي وحديقة واسعة.";
+    }
+    if (language === "en") {
+      return isCoolOrRainy ? "Enjoy an unforgettable day by the warm heated pool and crackling fireplace." : "Explore options featuring outdoor hot tubs, private gardens, and BBQ.";
+    }
+    return isCoolOrRainy ? "Sıcak kapalı havuz ve çıtırdayan şömine eşliğinde unutulmaz bir gün geçirin." : "Açık hava jakuzisi, geniş bahçe ve barbekü konseptli seçeneklerimizi keşfedin.";
+  };
+
+  const getCtaText = () => {
+    if (language === "ar") {
+      return isCoolOrRainy ? "عرض المنازل بمسابح دافئة" : "استكشف أجنحة الحديقة";
+    }
+    if (language === "en") {
+      return isCoolOrRainy ? "View Heated Pool Homes" : "Explore Garden Suites";
+    }
+    return isCoolOrRainy ? "Isıtmalı Havuzlu Evleri Gör" : "Bahçeli Suite'leri İncele";
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
@@ -118,10 +150,10 @@ export const LiveWeatherBanner: React.FC<LiveWeatherBannerProps> = ({
             <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full" />
           </div>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col ltr:text-left rtl:text-right">
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-extrabold uppercase tracking-widest text-emerald-400">
-                CANLI SAPANCA HAVA DURUMU
+                {t("hero.weatherTitle")}
               </span>
               <div className="flex items-center gap-1 bg-slate-800/80 px-2 py-0.5 rounded-full border border-white/10 text-xs font-bold text-slate-200">
                 {getWeatherIcon()}
@@ -131,16 +163,12 @@ export const LiveWeatherBanner: React.FC<LiveWeatherBannerProps> = ({
 
             {/* Experience Message */}
             <h4 className="text-sm sm:text-base font-bold text-white mt-1">
-              {isCoolOrRainy
-                ? "Sapanca'da Yağmurlu & Serin Bir Hava Var 🌧️"
-                : "Sapanca'da Harika Bir Doğa Güneşi ☀️"}
+              {getHeadlineText()}
             </h4>
 
             {/* Experience Subtext */}
             <p className="text-xs text-slate-300 font-normal mt-0.5 hidden sm:block">
-              {isCoolOrRainy
-                ? "Sıcak kapalı havuz ve çıtırdayan şömine eşliğinde unutulmaz bir gün geçirin."
-                : "Açık hava jakuzisi, geniş bahçe ve barbekü konseptli seçeneklerimizi keşfedin."}
+              {getSubtext()}
             </p>
           </div>
         </div>
@@ -151,12 +179,8 @@ export const LiveWeatherBanner: React.FC<LiveWeatherBannerProps> = ({
           onClick={handleAction}
           className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-xs sm:text-sm tracking-wide shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)] transition-all duration-300 flex items-center justify-center gap-2 flex-shrink-0 cursor-pointer transform hover:-translate-y-0.5 active:translate-y-0"
         >
-          <span>
-            {isCoolOrRainy
-              ? "Isıtmalı Havuzlu Evleri Gör"
-              : "Bahçeli Suite'leri İncele"}
-          </span>
-          <ArrowRight className="w-4 h-4" />
+          <span>{getCtaText()}</span>
+          <ArrowRight className="w-4 h-4 rtl:rotate-180" />
         </button>
       </div>
     </motion.div>

@@ -21,6 +21,7 @@ import {
   DESTINATIONS,
   RESORT_BASE_LOCATION,
 } from "@/constants/destinations";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // Dynamically import Leaflet Map to bypass SSR window issues
 const AdvancedMap = dynamic(
@@ -29,7 +30,7 @@ const AdvancedMap = dynamic(
     ssr: false,
     loading: () => (
       <div className="w-full h-[600px] rounded-3xl bg-slate-900 border border-white/10 flex items-center justify-center text-slate-400 font-medium animate-pulse">
-        Interactive Sapanca Haritası Yükleniyor...
+        Interactive Map...
       </div>
     ),
   }
@@ -61,6 +62,7 @@ const getCategoryIcon = (iconName: string) => {
 };
 
 export const DestinationMapSection: React.FC<DestinationMapSectionProps> = () => {
+  const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [activeSpotId, setActiveSpotId] = useState<string>(DESTINATIONS[0].id);
 
@@ -79,6 +81,15 @@ export const DestinationMapSection: React.FC<DestinationMapSectionProps> = () =>
     }
   };
 
+  const getCategoryName = (catId: string) => {
+    if (catId === "all") return t("destinations.categories.all");
+    if (catId === "nature") return t("destinations.categories.nature");
+    if (catId === "attraction") return t("destinations.categories.attraction");
+    if (catId === "food") return t("destinations.categories.food");
+    if (catId === "shopping") return t("destinations.categories.shopping");
+    return catId;
+  };
+
   return (
     <section className="relative bg-[#FAF8F5] dark:bg-slate-950 py-24 px-4 sm:px-6 lg:px-8 overflow-hidden text-slate-900 dark:text-white border-t border-amber-900/5 dark:border-white/5 transition-colors duration-300">
       {/* Background Decor Radial Glow */}
@@ -89,13 +100,13 @@ export const DestinationMapSection: React.FC<DestinationMapSectionProps> = () =>
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full backdrop-blur-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-widest mb-4">
             <Compass className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-            <span>LOKASYON & ÇEVRE REHBERİ</span>
+            <span>{t("destinations.badge")}</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-            Sapanca'yı Keşfedin
+            {t("destinations.title")}
           </h2>
           <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg mt-4 font-normal leading-relaxed">
-            Tetova Sapanca Bungalov tesisimizden birkaç dakika mesafedeki gezilecek yerler, doğa rotaları ve restoranlar.
+            {t("destinations.subtitle")}
           </p>
 
           {/* Category Filter Pills */}
@@ -115,7 +126,7 @@ export const DestinationMapSection: React.FC<DestinationMapSectionProps> = () =>
                   }`}
                 >
                   <IconComponent className="w-3.5 h-3.5" />
-                  <span>{cat.name}</span>
+                  <span>{getCategoryName(cat.id)}</span>
                 </button>
               );
             })}
@@ -125,7 +136,7 @@ export const DestinationMapSection: React.FC<DestinationMapSectionProps> = () =>
         {/* Interactive Map Layout (2 Columns) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Scrollable List View (lg:col-span-5) */}
-          <div className="lg:col-span-5 flex flex-col gap-4 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
+          <div className="lg:col-span-5 flex flex-col gap-4 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar ltr:text-left rtl:text-right">
             {filteredDestinations.map((spot) => {
               const isSelected = activeSpotId === spot.id;
 
@@ -150,7 +161,7 @@ export const DestinationMapSection: React.FC<DestinationMapSectionProps> = () =>
                         alt={spot.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute top-1.5 left-1.5">
+                      <div className="absolute top-1.5 ltr:left-1.5 rtl:right-1.5">
                         <span className="px-2 py-0.5 rounded-full bg-slate-950/80 backdrop-blur-md text-[10px] font-bold text-amber-400 flex items-center gap-0.5">
                           <Star className="w-2.5 h-2.5 fill-amber-400" />
                           {spot.rating}
@@ -167,7 +178,7 @@ export const DestinationMapSection: React.FC<DestinationMapSectionProps> = () =>
                           </span>
                           <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 flex items-center gap-1">
                             <Clock className="w-3 h-3 text-emerald-500" />
-                            {spot.durationMinutes} dk
+                            {spot.durationMinutes} {t("destinations.minAway")}
                           </span>
                         </div>
 
@@ -194,8 +205,8 @@ export const DestinationMapSection: React.FC<DestinationMapSectionProps> = () =>
                           onClick={(e) => e.stopPropagation()}
                           className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 transition-colors"
                         >
-                          <span>Yol Tarifi</span>
-                          <ExternalLink className="w-3 h-3" />
+                          <span>{t("destinations.getDirections")}</span>
+                          <ExternalLink className="w-3 h-3 rtl:rotate-180" />
                         </a>
                       </div>
                     </div>

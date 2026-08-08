@@ -20,22 +20,51 @@ export interface TestimonialsColumnProps {
   className?: string;
 }
 
+const AuthorAvatar: React.FC<{ src?: string; name: string }> = ({ src, name }) => {
+  const [hasError, setHasError] = React.useState(false);
+  const initial = name ? name.trim().charAt(0).toUpperCase() : "G";
+
+  if (!src || hasError) {
+    return (
+      <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-500 text-white font-extrabold text-sm flex items-center justify-center border border-amber-900/10 dark:border-white/20 shadow-md flex-shrink-0">
+        {initial}
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={name}
+      onError={() => setHasError(true)}
+      className="w-10 h-10 rounded-full object-cover border border-amber-900/10 dark:border-white/15 shadow-md flex-shrink-0"
+    />
+  );
+};
+
 export const TestimonialsColumn: React.FC<TestimonialsColumnProps> = ({
   testimonials,
   duration = 15,
   className = "",
 }) => {
+  const [isPaused, setIsPaused] = React.useState(false);
+
   return (
-    <div className={`overflow-hidden relative max-h-[680px] ${className}`}>
-      <motion.div
-        animate={{
-          translateY: [0, "-50%"],
-        }}
-        transition={{
-          duration: duration,
-          repeat: Infinity,
-          ease: "linear",
-          repeatType: "loop",
+    <div
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onMouseDown={() => setIsPaused(true)}
+      onMouseUp={() => setIsPaused(false)}
+      onTouchStart={() => setIsPaused(true)}
+      onTouchEnd={() => setIsPaused(false)}
+      title="Akışı duraklatmak için basılı tutun veya üzerine gelin"
+      className={`overflow-hidden relative max-h-[680px] select-none cursor-pointer ${className}`}
+    >
+      <div
+        style={{
+          animation: `marqueeVertical ${duration}s linear infinite`,
+          animationPlayState: isPaused ? "paused" : "running",
+          willChange: "transform",
         }}
         className="flex flex-col gap-6"
       >
@@ -68,11 +97,7 @@ export const TestimonialsColumn: React.FC<TestimonialsColumnProps> = ({
             {/* Author Footer */}
             <div className="flex items-center justify-between pt-4 border-t border-amber-900/10 dark:border-white/10 mt-auto">
               <div className="flex items-center gap-3">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-10 h-10 rounded-full object-cover border border-amber-900/10 dark:border-white/15 shadow-md"
-                />
+                <AuthorAvatar src={item.image} name={item.name} />
                 <div>
                   <div className="flex items-center gap-1.5">
                     <h4 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition-colors">
@@ -94,7 +119,7 @@ export const TestimonialsColumn: React.FC<TestimonialsColumnProps> = ({
             </div>
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };

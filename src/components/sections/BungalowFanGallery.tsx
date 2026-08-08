@@ -73,7 +73,7 @@ export const BungalowFanGallery: React.FC<BungalowFanGalleryProps> = ({
             </span>
           </h2>
           <p className="text-slate-300 text-base sm:text-lg mt-4 font-normal leading-relaxed">
-            Sapanca Vista'nın en sevilen detaylarını ve misafirlerimizin unutulmaz anlarını interaktif kart destesinde keşfedin.
+            Tetova Sapanca'nın en sevilen detaylarını ve misafirlerimizin unutulmaz anlarını interaktif kart destesinde keşfedin.
           </p>
         </div>
 

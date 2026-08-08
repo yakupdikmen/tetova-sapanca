@@ -5,7 +5,6 @@ import Navbar from "@/components/layout/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
 import BungalowGrid from "@/components/sections/BungalowGrid";
 import AmenitiesSection from "@/components/sections/AmenitiesSection";
-import BookingCalculator from "@/components/sections/BookingCalculator";
 import GoogleReviewsMarquee from "@/components/sections/GoogleReviewsMarquee";
 import DestinationMapSection from "@/components/sections/DestinationMapSection";
 import BlogSection from "@/components/sections/BlogSection";
@@ -14,18 +13,17 @@ import Footer from "@/components/layout/Footer";
 import BungalowDetailModal from "@/components/ui/BungalowDetailModal";
 import InteractiveVirtualTour from "@/components/ui/InteractiveVirtualTour";
 import { Bungalow } from "@/constants/bungalows";
+import { openWhatsApp } from "@/utils/whatsapp";
 
 export default function Home() {
   const [activeBungalow, setActiveBungalow] = useState<Bungalow | null>(null);
   const [isVirtualTourOpen, setIsVirtualTourOpen] = useState<boolean>(false);
 
-  const handleBookNowFromTourOrModal = () => {
+  const handleBookNowFromTourOrModal = (bungalow?: Bungalow | null) => {
     setActiveBungalow(null);
     setIsVirtualTourOpen(false);
-    const calculatorElement = document.getElementById("calculator");
-    if (calculatorElement) {
-      calculatorElement.scrollIntoView({ behavior: "smooth" });
-    }
+    const bTitle = bungalow ? bungalow.title : "Bungalov";
+    openWhatsApp(`Merhaba, Tetova Sapanca web sitenizden ${bTitle} için bilgi ve rezervasyon talebinde bulunmak istiyorum.`);
   };
 
   return (
@@ -57,43 +55,40 @@ export default function Home() {
         {/* 3. Luxury Amenities Section */}
         <AmenitiesSection />
 
-        {/* 4. Booking Price Calculator */}
-        <div id="calculator">
-          <BookingCalculator />
-        </div>
-
-        {/* 5. Animated Google Reviews Vertical Marquee */}
+        {/* 4. Animated Google Reviews Vertical Marquee */}
         <GoogleReviewsMarquee />
 
-        {/* 6. Interactive Sapanca Destination Map Section */}
+        {/* 5. Interactive Sapanca Destination Map Section */}
         <DestinationMapSection />
 
-        {/* 7. SEO Blog & Local Guide Section */}
-        <BlogSection />
+        {/* 6. SEO Blog & Local Guide Section */}
+        <div id="blog">
+          <BlogSection />
+        </div>
 
-        {/* 8. Sıkça Sorulan Sorular (FAQ) Section - Bottom Position */}
+        {/* 7. Sıkça Sorulan Sorular (FAQ) Section */}
         <div id="faq">
           <FaqSection />
         </div>
       </main>
 
-      {/* 9. Luxury Footer */}
+      {/* 8. Luxury Footer */}
       <Footer />
 
-      {/* Fullscreen Bungalow Detail Modal with Embedded Card Fan Carousel */}
+      {/* Fullscreen Bungalow Detail Modal */}
       <BungalowDetailModal
         selectedBungalow={activeBungalow}
         isOpen={Boolean(activeBungalow)}
         onClose={() => setActiveBungalow(null)}
-        onBookNow={handleBookNowFromTourOrModal}
+        onBookNow={(b) => handleBookNowFromTourOrModal(b)}
       />
 
-      {/* 360° Interactive Virtual Tour with HUD Overlay */}
+      {/* 360° Interactive Virtual Tour */}
       <InteractiveVirtualTour
         isOpen={isVirtualTourOpen}
         onClose={() => setIsVirtualTourOpen(false)}
         bungalow={activeBungalow}
-        onBookNow={handleBookNowFromTourOrModal}
+        onBookNow={() => handleBookNowFromTourOrModal(activeBungalow)}
       />
     </div>
   );

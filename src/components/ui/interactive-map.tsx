@@ -21,8 +21,8 @@ const createResortMarkerIcon = () => {
     html: `
       <div class="relative flex flex-col items-center group cursor-pointer">
         <span class="absolute w-12 h-12 bg-emerald-500/40 rounded-full animate-ping"></span>
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 text-white flex items-center justify-center shadow-[0_0_25px_rgba(16,185,129,0.9)] border-2 border-white">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 text-white flex items-center justify-center shadow-[0_0_25px_rgba(16,185,129,0.9)] border-2 border-white p-1 overflow-hidden">
+          <img src="/tetova_gold.svg" class="w-full h-full object-contain" alt="Tetova Sapanca Icon" />
         </div>
         <span class="mt-1 px-2.5 py-0.5 rounded-full bg-slate-900/95 border border-emerald-400/50 text-emerald-300 text-[10px] font-extrabold tracking-wider uppercase shadow-xl whitespace-nowrap">
           TETOVA SAPANCA BUNGALOV

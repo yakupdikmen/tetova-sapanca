@@ -3,6 +3,11 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+  }
+
   :root {
     --bg-canvas: #FAF8F5 !important;
     --bg-surface: #FFFFFF !important;
@@ -46,4 +51,14 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(16, 185, 129, 0.6);
+  border-radius: 4px;
+}
+
+@keyframes marqueeVertical {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
 }

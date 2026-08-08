@@ -23,6 +23,7 @@ export interface DestinationItem {
 
 export const RESORT_BASE_LOCATION = {
   name: "Tetova Sapanca Bungalov (Tesisimiz)",
+  address: "Kırkpınar Soğuksu Mah. Bağdat Cd. Sapanca / Sakarya",
   lat: 40.6883377,
   lng: 30.1975338,
   googleMapsUrl: "https://www.google.com/maps/place/Tetova+Sapanca+Bungalov/@40.6883377,30.1949589,17z/data=!3m1!4b1!4m6!3m5!1s0x14cca742addd099d:0xa2c6bb62c910ee12!8m2!3d40.6883377!4d30.1975338!16s%2Fg%2F11w3mdlzpc?entry=ttu&g_ep=EgoyMDI2MDcyNy4wIKXMDSoASAFQAw%3D%3D",

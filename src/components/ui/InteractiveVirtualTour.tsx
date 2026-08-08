@@ -16,6 +16,7 @@ import {
   Bed,
 } from "lucide-react";
 import { Bungalow, MOCK_BUNGALOWS } from "@/constants/bungalows";
+import { openWhatsApp } from "@/utils/whatsapp";
 
 export interface InteractiveVirtualTourProps {
   isOpen: boolean;
@@ -257,12 +258,14 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
                     transition={SPRING_TRANSITION}
                     type="button"
                     onClick={() => {
+                      const bungalowName = displayBungalow ? displayBungalow.title : "Bungalov";
+                      openWhatsApp(`Merhaba, Tetova Sapanca 360° Sanal Tur sayfanızdan ulaşıyorum.\n\n🏡 *İncelenen Ev:* ${bungalowName}\n\nBu bungalov için müsaitlik durumu ve fiyat bilgisi almak istiyorum.`);
                       if (onBookNow) onBookNow(displayBungalow);
                       onClose();
                     }}
                     className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-xs sm:text-sm tracking-wide shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <span>Hemen Rezerve Et</span>
+                    <span>WhatsApp ile Rezerve Et</span>
                     <ArrowRight className="w-4 h-4" />
                   </motion.button>
                 </div>

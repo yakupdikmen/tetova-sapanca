@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import { Bungalow } from "@/constants/bungalows";
 import SocialCards, { SocialCardItem } from "@/components/ui/card-fan-carousel";
+import { openWhatsApp } from "@/utils/whatsapp";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export interface BungalowDetailModalProps {
   selectedBungalow: Bungalow | null;
@@ -36,6 +38,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
   onClose,
   onBookNow,
 }) => {
+  const { t, formatPrice, language } = useLanguage();
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   // Reset active index when bungalow changes or opens
@@ -69,17 +72,40 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
 
   if (!isOpen || !selectedBungalow) return null;
 
-  // Convert bungalow gallery images to SocialCardItem format for Card Fan Carousel
+  const getLocalizedTitle = () => {
+    if (selectedBungalow.id === "platin-villa") return t("bungalows.categories.platin");
+    if (selectedBungalow.id === "gold-bungalov") return t("bungalows.categories.gold");
+    if (selectedBungalow.id === "silver-bungalov") return t("bungalows.categories.silver");
+    if (selectedBungalow.id === "bronz-bungalov") return t("bungalows.categories.bronz");
+    return selectedBungalow.title;
+  };
+
+  const getLocalizedTagline = () => {
+    if (language === "ar") {
+      if (selectedBungalow.id === "platin-villa") return "فيلا مالك فاخرة بمسابح دافئة على مدار الفصول وجاكوزي ومدفأة حطب";
+      if (selectedBungalow.id === "gold-bungalov") return "بنغل ذهبي بمسبح دافئ وإطلالة بانورامية وجاكوزي خاص";
+      if (selectedBungalow.id === "silver-bungalov") return "بنغل فضي مريح بجاكوزي خاص وشرفة في أحضان الطبيعة";
+      if (selectedBungalow.id === "bronz-bungalov") return "بنغل برونزي دافئ بحديقة خاصة وموقد نار ومواقف سيارات";
+    }
+    if (language === "en") {
+      if (selectedBungalow.id === "platin-villa") return "Tetova Sapanca's Most Exclusive VIP Mansion Villa with Heated Pool & Hot Tub";
+      if (selectedBungalow.id === "gold-bungalov") return "Gold Concept Bungalow with Heated Pool & Panoramic Nature Views";
+      if (selectedBungalow.id === "silver-bungalov") return "Silver Concept Bungalow with Private Hot Tub & Nature Terrace";
+      if (selectedBungalow.id === "bronz-bungalov") return "Cozy & Warm Nature Concept Bronz Bungalow with Private Garden & BBQ";
+    }
+    return selectedBungalow.tagline;
+  };
+
   const galleryImages = selectedBungalow.gallery?.length
     ? selectedBungalow.gallery
     : [selectedBungalow.image];
 
   const fanCards: SocialCardItem[] = galleryImages.map((imgUrl, idx) => ({
     id: `detail-fan-${idx}`,
-    title: `${selectedBungalow.title} - Görsel ${idx + 1}`,
-    subtitle: selectedBungalow.tagline,
+    title: `${getLocalizedTitle()} - ${idx + 1}`,
+    subtitle: getLocalizedTagline(),
     image: imgUrl,
-    tag: idx === 0 ? "Ana Görsel" : `Kare ${idx + 1}`,
+    tag: idx === 0 ? "Main View" : `Photo ${idx + 1}`,
     likes: 450 + idx * 120,
   }));
 
@@ -89,6 +115,24 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
 
   const handleNext = () => {
     setActiveIndex((prev) => (prev < galleryImages.length - 1 ? prev + 1 : 0));
+  };
+
+  const handleWhatsAppBooking = () => {
+    const bTitle = getLocalizedTitle();
+    const formattedP = formatPrice(selectedBungalow.price);
+
+    let waText = "";
+    if (language === "ar") {
+      waText = `مرحباً، أود الحصول على معلومات وحجز ${bTitle} عبر تيتوفا صبانجة.\n\n🏡 *نوع البنغل:* ${bTitle}\n💰 *السعر لليلة:* ${formattedP}\n👥 *السعة:* ${selectedBungalow.capacity} ضيوف\n\nهل يمكنني معرفة التوفر والتواريخ المتاحة؟`;
+    } else if (language === "en") {
+      waText = `Hello, I would like to get information and book ${bTitle} at Tetova Sapanca.\n\n🏡 *Bungalow Type:* ${bTitle}\n💰 *Price per Night:* ${formattedP}\n👥 *Capacity:* ${selectedBungalow.capacity} Guests\n\nCould you please let me know availability and suitable dates?`;
+    } else {
+      waText = `Merhaba, Tetova Sapanca ${bTitle} hakkında bilgi alıp rezervasyon yaptırmak istiyorum.\n\n🏡 *Bungalov Tipi:* ${bTitle}\n💰 *Gecelik Fiyat:* ${formattedP}\n👥 *Kapasite:* ${selectedBungalow.capacity} Misafir\n\nMüsaitlik durumunu ve uygun tarihleri öğrenebilir miyim?`;
+    }
+
+    openWhatsApp(waText);
+    if (onBookNow) onBookNow(selectedBungalow);
+    onClose();
   };
 
   return (
@@ -109,7 +153,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
             exit={{ scale: 0.92, opacity: 0 }}
             transition={SPRING_TRANSITION}
             onClick={(e) => e.stopPropagation()}
-            className="relative bg-slate-900/90 border border-white/10 rounded-3xl w-full max-w-6xl p-5 sm:p-8 md:p-10 flex flex-col justify-between overflow-hidden shadow-2xl my-auto"
+            className="relative bg-slate-900/90 border border-white/10 rounded-3xl w-full max-w-6xl p-5 sm:p-8 md:p-10 flex flex-col justify-between overflow-hidden shadow-2xl my-auto ltr:text-left rtl:text-right"
           >
             {/* Top Bar */}
             <div className="flex items-center justify-between gap-4 pb-4 sm:pb-6 border-b border-white/10">
@@ -118,12 +162,12 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                   {selectedBungalow.featured && (
                     <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-bold uppercase tracking-wider">
                       <Sparkles className="w-3.5 h-3.5" />
-                      ÖNE ÇIKAN VIP
+                      {t("bungalows.featuredBadge")}
                     </span>
                   )}
                   <span className="inline-flex items-center gap-1 text-slate-300 text-xs font-medium">
                     <MapPin className="w-3.5 h-3.5 text-emerald-400" />
-                    {selectedBungalow.location}
+                    Kırkpınar, Sapanca
                   </span>
                   <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-950/70 border border-white/10 text-amber-400 text-xs font-semibold">
                     <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
@@ -132,10 +176,10 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                 </div>
 
                 <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">
-                  {selectedBungalow.title}
+                  {getLocalizedTitle()}
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-300 font-normal">
-                  {selectedBungalow.tagline}
+                  {getLocalizedTagline()}
                 </p>
               </div>
 
@@ -170,7 +214,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                   onClick={handlePrev}
                   className="w-9 h-9 rounded-full bg-slate-950/80 border border-white/15 text-slate-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer flex-shrink-0"
                 >
-                  <ChevronLeft className="w-5 h-5" />
+                  <ChevronLeft className="w-5 h-5 rtl:rotate-180" />
                 </button>
 
                 {/* Horizontal Scrollable Thumbnail Strip */}
@@ -189,7 +233,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                       >
                         <img
                           src={imgUrl}
-                          alt={`${selectedBungalow.title} küçük resim ${index + 1}`}
+                          alt={`${getLocalizedTitle()} photo ${index + 1}`}
                           className="w-full h-full object-cover"
                         />
                       </div>
@@ -203,7 +247,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                   onClick={handleNext}
                   className="w-9 h-9 rounded-full bg-slate-950/80 border border-white/15 text-slate-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer flex-shrink-0"
                 >
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-5 h-5 rtl:rotate-180" />
                 </button>
               </div>
 
@@ -233,7 +277,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-950/80 border border-white/10 text-white text-xs font-medium">
                     <Users className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>{selectedBungalow.capacity} Misafir</span>
+                    <span>{selectedBungalow.capacity} {t("bungalows.guests")}</span>
                   </span>
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-950/80 border border-white/10 text-white text-xs font-medium">
                     <Maximize2 className="w-3.5 h-3.5 text-emerald-400" />
@@ -255,13 +299,13 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
               <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
                 <div>
                   <span className="text-[11px] text-slate-400 uppercase tracking-wider block">
-                    Gecelik Fiyat
+                    {t("bungalows.nightlyPrice")}
                   </span>
                   <div className="flex items-baseline gap-1">
                     <span className="text-2xl font-black text-white">
-                      ₺{selectedBungalow.price.toLocaleString("tr-TR")}
+                      {formatPrice(selectedBungalow.price)}
                     </span>
-                    <span className="text-xs text-slate-400">/ gece</span>
+                    <span className="text-xs text-slate-400">/ {t("bungalows.perNight")}</span>
                   </div>
                 </div>
 
@@ -269,14 +313,11 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   transition={SPRING_TRANSITION}
-                  onClick={() => {
-                    if (onBookNow) onBookNow(selectedBungalow);
-                    onClose();
-                  }}
+                  onClick={handleWhatsAppBooking}
                   className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-sm tracking-wide shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <span>Hemen Rezerve Et</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>{t("bungalows.modal.instantBook")}</span>
+                  <ArrowRight className="w-4 h-4 rtl:rotate-180" />
                 </motion.button>
               </div>
             </div>

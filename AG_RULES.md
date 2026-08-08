@@ -1,4 +1,4 @@
-# ANTIGRAVITY AGENT RULES - Sapanca Vista Project
+# ANTIGRAVITY AGENT RULES - Tetova Sapanca Project
 
 1. IMMUTABLE DESIGN & MOTION:
    - All motion/animation logic MUST use `framer-motion`.

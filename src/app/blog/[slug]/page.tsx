@@ -25,12 +25,12 @@ export async function generateMetadata({ params }: BlogDetailPageProps) {
 
   if (!post) {
     return {
-      title: "Rehber Bulunamadı - Sapanca Vista",
+      title: "Rehber Bulunamadı - Tetova Sapanca",
     };
   }
 
   return {
-    title: `${post.title} | Sapanca Vista Rehber`,
+    title: `${post.title} | Tetova Sapanca Rehber`,
     description: post.excerpt,
     openGraph: {
       title: post.title,
@@ -94,7 +94,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
               />
               <div>
                 <h4 className="text-sm font-bold text-white">{post.author.name}</h4>
-                <span className="text-xs text-slate-400">Sapanca Vista Gezi Editörü</span>
+                <span className="text-xs text-slate-400">Tetova Sapanca Gezi Editörü</span>
               </div>
             </div>
           </header>
@@ -123,7 +123,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                 <span>ÖZEL LÜKS KONAKLAMA</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-white">
-                Sapanca Vista'da Hayalinizdeki Tatili Yaşayın
+                Tetova Sapanca'da Hayalinizdeki Tatili Yaşayın
               </h3>
               <p className="text-xs sm:text-sm text-slate-300">
                 Isıtmalı özel havuzlu VIP bungalov seçkilerini inceleyin, anında fiyat simülasyonu yapın.
@@ -131,10 +131,10 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             </div>
 
             <Link
-              href="/#calculator"
+              href="/#bungalows"
               className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-sm tracking-wide shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all duration-300 flex items-center gap-2 flex-shrink-0"
             >
-              <span>Hemen Fiyat Hesapla</span>
+              <span>Bungalovları İncele</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
