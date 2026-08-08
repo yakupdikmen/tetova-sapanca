@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { Bungalow, MOCK_BUNGALOWS } from "@/constants/bungalows";
 import { openWhatsApp } from "@/utils/whatsapp";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export interface InteractiveVirtualTourProps {
   isOpen: boolean;
@@ -32,13 +33,6 @@ const SPRING_TRANSITION = {
   damping: 25,
 };
 
-const SCENE_PRESETS = [
-  { id: "veranda", label: "Veranda & Bahçe", icon: Home },
-  { id: "havuz", label: "Isıtmalı Havuz", icon: Waves },
-  { id: "jakuzi", label: "Jakuzi Suite", icon: Sparkles },
-  { id: "yatak-odasi", label: "Yatak Odası & Loft", icon: Bed },
-];
-
 export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
   isOpen,
   onClose,
@@ -46,11 +40,27 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
   bungalow = MOCK_BUNGALOWS[0],
   onBookNow,
 }) => {
+  const { t, formatPrice, language } = useLanguage();
   const [activeScene, setActiveScene] = useState<string>("veranda");
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [showDragPrompt, setShowDragPrompt] = useState<boolean>(true);
 
   const displayBungalow = bungalow || MOCK_BUNGALOWS[0];
+
+  const getBungalowTitle = (b: Bungalow) => {
+    if (b.id === "platin-villa") return t("bungalows.categories.platin");
+    if (b.id === "gold-bungalov") return t("bungalows.categories.gold");
+    if (b.id === "silver-bungalov") return t("bungalows.categories.silver");
+    if (b.id === "bronz-bungalov") return t("bungalows.categories.bronz");
+    return b.title;
+  };
+
+  const scenePresets = [
+    { id: "veranda", label: t("tour.scenes.veranda"), icon: Home },
+    { id: "havuz", label: t("tour.scenes.pool"), icon: Waves },
+    { id: "jakuzi", label: t("tour.scenes.jacuzzi"), icon: Sparkles },
+    { id: "yatak-odasi", label: t("tour.scenes.bedroom"), icon: Bed },
+  ];
 
   // Lock body scroll & listen for Escape key press with reliable cleanup
   useEffect(() => {
@@ -112,7 +122,7 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
           <div className="relative w-full h-full">
             <iframe
               src={tourUrl}
-              title="360° Interaktif Sanal Tur"
+              title="360° Virtual Tour"
               className="w-full h-full border-none bg-slate-950"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; vr"
               allowFullScreen
@@ -120,7 +130,7 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
           </div>
 
           {/* Layer 2: Glassmorphism HUD Overlay (pointer-events-none parent) */}
-          <div className="absolute inset-0 z-10 pointer-events-none p-4 sm:p-6 md:p-8 flex flex-col justify-between">
+          <div className="absolute inset-0 z-10 pointer-events-none p-4 sm:p-6 md:p-8 flex flex-col justify-between ltr:text-left rtl:text-right">
             {/* Top HUD Bar */}
             <div className="flex items-start justify-between gap-4">
               {/* Top-Left: Live Status Badge & Quick Scene Selector */}
@@ -132,13 +142,13 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
                   </span>
                   <span className="text-xs font-extrabold tracking-wider uppercase flex items-center gap-1.5">
                     <Compass className="w-3.5 h-3.5 text-emerald-400 animate-spin-slow" />
-                    <span>360° CANLI TUR REHBERİ</span>
+                    <span>{t("tour.liveBadge")}</span>
                   </span>
                 </div>
 
                 {/* Scene Selector Pills */}
                 <div className="hidden sm:flex flex-wrap items-center gap-2 p-1.5 rounded-2xl backdrop-blur-xl bg-slate-900/80 border border-white/10 shadow-xl">
-                  {SCENE_PRESETS.map((scene) => {
+                  {scenePresets.map((scene) => {
                     const IconComp = scene.icon;
                     const isActive = activeScene === scene.id;
                     return (
@@ -171,7 +181,7 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
                   transition={SPRING_TRANSITION}
                   type="button"
                   onClick={toggleFullscreen}
-                  title="Tam Ekran Modu"
+                  title={t("tour.fullscreen")}
                   className="w-11 h-11 rounded-2xl backdrop-blur-xl bg-slate-900/80 border border-white/15 text-slate-300 hover:text-white flex items-center justify-center shadow-xl cursor-pointer"
                 >
                   {isFullscreen ? (
@@ -187,7 +197,7 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
                   transition={SPRING_TRANSITION}
                   type="button"
                   onClick={onClose}
-                  title="Kapat"
+                  title={t("tour.close")}
                   className="w-11 h-11 rounded-2xl backdrop-blur-xl bg-slate-900/80 border border-white/15 text-slate-300 hover:text-white flex items-center justify-center shadow-xl cursor-pointer"
                 >
                   <X className="w-5 h-5" />
@@ -208,7 +218,7 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
                   <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full backdrop-blur-2xl bg-slate-900/85 border border-emerald-500/30 text-white shadow-[0_0_30px_rgba(16,185,129,0.3)] animate-pulse">
                     <MoveHorizontal className="w-5 h-5 text-emerald-400" />
                     <span className="text-xs sm:text-sm font-semibold tracking-wide">
-                      Etrafa bakmak için 360° sürükleyin
+                      {t("tour.dragPrompt")}
                     </span>
                   </div>
                 </motion.div>
@@ -221,32 +231,32 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
               <div className="hidden md:flex flex-col gap-1 pointer-events-auto">
                 <span className="text-xs text-emerald-400 font-semibold tracking-wider uppercase flex items-center gap-1">
                   <MapPin className="w-3.5 h-3.5" />
-                  {displayBungalow.location}
+                  Kırkpınar, Sapanca
                 </span>
                 <span className="text-lg font-bold text-white">
-                  {displayBungalow.title}
+                  {getBungalowTitle(displayBungalow)}
                 </span>
               </div>
 
               {/* Bottom-Right Sticky Card: Reservation Widget */}
-              <div className="pointer-events-auto ml-auto">
+              <div className="pointer-events-auto ltr:ml-auto rtl:mr-auto">
                 <div className="bg-slate-900/80 backdrop-blur-xl border border-emerald-500/20 p-4 sm:p-5 rounded-2xl max-w-sm w-full shadow-2xl flex flex-col gap-3">
                   <div className="flex items-center gap-3">
                     <img
                       src={displayBungalow.image}
-                      alt={displayBungalow.title}
+                      alt={getBungalowTitle(displayBungalow)}
                       className="w-12 h-12 rounded-xl object-cover"
                     />
                     <div className="flex-1 min-w-0">
                       <h4 className="text-xs sm:text-sm font-bold text-white truncate">
-                        {displayBungalow.title}
+                        {getBungalowTitle(displayBungalow)}
                       </h4>
                       <div className="flex items-baseline gap-1 mt-0.5">
                         <span className="text-base font-extrabold text-emerald-400">
-                          ₺{displayBungalow.price.toLocaleString("tr-TR")}
+                          {formatPrice(displayBungalow.price)}
                         </span>
                         <span className="text-[11px] text-slate-400 font-normal">
-                          / gece
+                          / {t("bungalows.perNight")}
                         </span>
                       </div>
                     </div>
@@ -258,15 +268,26 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
                     transition={SPRING_TRANSITION}
                     type="button"
                     onClick={() => {
-                      const bungalowName = displayBungalow ? displayBungalow.title : "Bungalov";
-                      openWhatsApp(`Merhaba, Tetova Sapanca 360° Sanal Tur sayfanızdan ulaşıyorum.\n\n🏡 *İncelenen Ev:* ${bungalowName}\n\nBu bungalov için müsaitlik durumu ve fiyat bilgisi almak istiyorum.`);
+                      const bungalowName = getBungalowTitle(displayBungalow);
+                      const formattedP = formatPrice(displayBungalow.price);
+
+                      let waText = "";
+                      if (language === "ar") {
+                        waText = `مرحباً، أتواصل معكم من صفحة الجولة الافتراضية 360° لـ تيتوفا صبانجة.\n\n🏡 *المنزل المعاين:* ${bungalowName}\n💰 *السعر لليلة:* ${formattedP}\n\nأود الحصول على معلومات التوفر والحجز لهذا البنغل.`;
+                      } else if (language === "en") {
+                        waText = `Hello, I'm reaching out from the 360° Virtual Tour page of Tetova Sapanca.\n\n🏡 *Inspected Home:* ${bungalowName}\n💰 *Price per Night:* ${formattedP}\n\nI would like to get availability and pricing information for this bungalow.`;
+                      } else {
+                        waText = `Merhaba, Tetova Sapanca 360° Sanal Tur sayfanızdan ulaşıyorum.\n\n🏡 *İncelenen Ev:* ${bungalowName}\n💰 *Gecelik Fiyat:* ${formattedP}\n\nBu bungalov için müsaitlik durumu ve fiyat bilgisi almak istiyorum.`;
+                      }
+
+                      openWhatsApp(waText);
                       if (onBookNow) onBookNow(displayBungalow);
                       onClose();
                     }}
                     className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-xs sm:text-sm tracking-wide shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <span>WhatsApp ile Rezerve Et</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <span>{t("tour.bookWhatsapp")}</span>
+                    <ArrowRight className="w-4 h-4 rtl:rotate-180" />
                   </motion.button>
                 </div>
               </div>

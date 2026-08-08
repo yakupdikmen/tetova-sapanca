@@ -120,6 +120,7 @@ export const translations = {
       subtitle: "Akışı duraklatıp rahatça okumak için kartın üzerine gelin veya basılı tutun",
       ratingBadge: "Doğrulanmış Google Yorumu",
       viewOnGoogle: "Google Maps'te İncele",
+      googleCustomer: "Google Müşterisi",
     },
     destinations: {
       badge: "LOKASYON & ÇEVRE REHBERİ",
@@ -156,6 +157,19 @@ export const translations = {
       contactTitle: "İletişim & Konum",
       address: "Kırkpınar Soğuksu Mah. Bağdat Cd. Sapanca / Sakarya",
       rights: "Tüm Hakları Saklıdır.",
+    },
+    tour: {
+      liveBadge: "360° CANLI TUR REHBERİ",
+      scenes: {
+        veranda: "Veranda & Bahçe",
+        pool: "Isıtmalı Havuz",
+        jacuzzi: "Jakuzi Suite",
+        bedroom: "Yatak Odası & Loft",
+      },
+      fullscreen: "Tam Ekran Modu",
+      close: "Kapat",
+      dragPrompt: "Etrafa bakmak için 360° sürükleyin",
+      bookWhatsapp: "WhatsApp ile Rezerve Et",
     },
     seo: {
       pageTitle: "Tetova Sapanca | Lüks Isıtmalı Havuzlu VIP Bungalovlar",
@@ -279,6 +293,7 @@ export const translations = {
       subtitle: "Hover or press and hold over any review card to pause scrolling and read smoothly.",
       ratingBadge: "Verified Google Reviews",
       viewOnGoogle: "View on Google Maps",
+      googleCustomer: "Google Guest",
     },
     destinations: {
       badge: "LOCATION & TRAVEL GUIDE",
@@ -315,6 +330,19 @@ export const translations = {
       contactTitle: "Contact & Location",
       address: "Kırkpınar Soğuksu Mah. Bağdat Cd. Sapanca / Sakarya",
       rights: "All Rights Reserved.",
+    },
+    tour: {
+      liveBadge: "360° LIVE TOUR GUIDE",
+      scenes: {
+        veranda: "Veranda & Garden",
+        pool: "Heated Pool",
+        jacuzzi: "Jacuzzi Suite",
+        bedroom: "Bedroom & Loft",
+      },
+      fullscreen: "Fullscreen Mode",
+      close: "Close",
+      dragPrompt: "Drag 360° to explore around",
+      bookWhatsapp: "Book via WhatsApp",
     },
     seo: {
       pageTitle: "Tetova Sapanca | Luxury VIP Heated Pool Bungalows",
@@ -438,6 +466,7 @@ export const translations = {
       subtitle: "ضع المؤشر أو اضغط مطولاً على بطاقة التقييم لإيقاف التمرير والقراءة بمهل.",
       ratingBadge: "تقييم موثق من جوجل",
       viewOnGoogle: "عرض في خرائط جوجل",
+      googleCustomer: "عميل جوجل",
     },
     destinations: {
       badge: "دليل الموقع والجولات",
@@ -474,6 +503,19 @@ export const translations = {
       contactTitle: "الاتصال والموقع",
       address: "كيركبينار صوغوك سو، شارع بغداد، صبانجة / صقاريا",
       rights: "جميع الحقوق محفوظة.",
+    },
+    tour: {
+      liveBadge: "مرشد الجولة الافتراضية 360°",
+      scenes: {
+        veranda: "الشرفة والحديقة",
+        pool: "المسبح الدافئ",
+        jacuzzi: "جناح الجاكوزي",
+        bedroom: "غرفة النوم والغرفة العلوية",
+      },
+      fullscreen: "وضع الشاشة الكاملة",
+      close: "إغلاق",
+      dragPrompt: "اسحب 360° للاستكشاف حولك",
+      bookWhatsapp: "احجز عبر واتساب",
     },
     seo: {
       pageTitle: "تيتوفا صبانجة | بنغلات VIP فاخرة بمسابح دافئة",

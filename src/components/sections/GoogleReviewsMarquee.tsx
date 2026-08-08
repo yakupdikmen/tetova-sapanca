@@ -37,6 +37,8 @@ export const GoogleReviewsMarquee: React.FC<GoogleReviewsMarqueeProps> = ({
   const [col2, setCol2] = React.useState<Testimonial[]>(COLUMN_2_REVIEWS);
   const [col3, setCol3] = React.useState<Testimonial[]>(COLUMN_3_REVIEWS);
 
+  const customerRole = t("reviews.googleCustomer");
+
   React.useEffect(() => {
     async function fetchLiveReviews() {
       try {
@@ -51,7 +53,7 @@ export const GoogleReviewsMarquee: React.FC<GoogleReviewsMarqueeProps> = ({
         if (data.isLive && data.reviews && data.reviews.length > 0) {
           const liveFormatted: Testimonial[] = data.reviews.map((r: any) => ({
             name: r.authorName,
-            role: "Google Müşterisi",
+            role: customerRole,
             dateText: r.dateText,
             text: r.reviewText,
             image: r.authorAvatar,

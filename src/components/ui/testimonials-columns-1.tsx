@@ -57,7 +57,6 @@ export const TestimonialsColumn: React.FC<TestimonialsColumnProps> = ({
       onMouseUp={() => setIsPaused(false)}
       onTouchStart={() => setIsPaused(true)}
       onTouchEnd={() => setIsPaused(false)}
-      title="Akışı duraklatmak için basılı tutun veya üzerine gelin"
       className={`overflow-hidden relative max-h-[680px] select-none cursor-pointer ${className}`}
     >
       <div
