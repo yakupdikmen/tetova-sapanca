@@ -15,7 +15,7 @@ export default function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #020617 0%, #0f172a 45%, #022c22 100%)",
+          background: "linear-gradient(135deg, #0c0a09 0%, #1c1917 45%, #451a03 100%)",
           padding: 80,
         }}
       >
@@ -26,9 +26,9 @@ export default function Image() {
             gap: 14,
             padding: "10px 24px",
             borderRadius: 999,
-            border: "1px solid rgba(16,185,129,0.4)",
-            background: "rgba(16,185,129,0.08)",
-            color: "#34d399",
+            border: "1px solid rgba(245,158,11,0.4)",
+            background: "rgba(245,158,11,0.08)",
+            color: "#fbbf24",
             fontSize: 26,
             fontWeight: 700,
             letterSpacing: 2,
@@ -57,7 +57,7 @@ export default function Image() {
             marginTop: 22,
             fontSize: 36,
             fontWeight: 500,
-            color: "#cbd5e1",
+            color: "#d6d3d1",
             textAlign: "center",
           }}
         >

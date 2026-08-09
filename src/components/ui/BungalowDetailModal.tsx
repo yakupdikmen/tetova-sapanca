@@ -152,7 +152,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-2xl flex items-center justify-center p-3 sm:p-6 md:p-8 overflow-y-auto"
+          className="fixed inset-0 z-50 bg-stone-950/90 backdrop-blur-2xl flex items-center justify-center p-3 sm:p-6 md:p-8 overflow-y-auto"
           onClick={onClose}
         >
           {/* Floating Dark Container */}
@@ -162,23 +162,23 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
             exit={{ scale: 0.92, opacity: 0 }}
             transition={SPRING_TRANSITION}
             onClick={(e) => e.stopPropagation()}
-            className="relative bg-slate-900/90 border border-white/10 rounded-3xl w-full max-w-6xl p-5 sm:p-8 md:p-10 flex flex-col justify-between overflow-hidden shadow-2xl my-auto ltr:text-left rtl:text-right"
+            className="relative bg-stone-900/90 border border-white/10 rounded-3xl w-full max-w-6xl p-5 sm:p-8 md:p-10 flex flex-col justify-between overflow-hidden shadow-2xl my-auto ltr:text-left rtl:text-right"
           >
             {/* Top Bar */}
             <div className="flex items-center justify-between gap-4 pb-4 sm:pb-6 border-b border-white/10">
               <div className="flex flex-col gap-1">
                 <div className="flex flex-wrap items-center gap-2">
                   {selectedBungalow.featured && (
-                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-bold uppercase tracking-wider">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-wider">
                       <Sparkles className="w-3.5 h-3.5" />
                       {t("bungalows.featuredBadge")}
                     </span>
                   )}
-                  <span className="inline-flex items-center gap-1 text-slate-300 text-xs font-medium">
-                    <MapPin className="w-3.5 h-3.5 text-emerald-400" />
+                  <span className="inline-flex items-center gap-1 text-stone-300 text-xs font-medium">
+                    <MapPin className="w-3.5 h-3.5 text-amber-400" />
                     Kırkpınar, Sapanca
                   </span>
-                  <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-950/70 border border-white/10 text-amber-400 text-xs font-semibold">
+                  <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-stone-950/70 border border-white/10 text-amber-400 text-xs font-semibold">
                     <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                     <span>{selectedBungalow.rating}</span>
                   </div>
@@ -187,7 +187,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                 <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">
                   {getLocalizedTitle()}
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-300 font-normal">
+                <p className="text-xs sm:text-sm text-stone-300 font-normal">
                   {getLocalizedTagline()}
                 </p>
               </div>
@@ -198,7 +198,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                 whileTap={{ scale: 0.9 }}
                 transition={SPRING_TRANSITION}
                 onClick={onClose}
-                className="w-10 h-10 rounded-full bg-slate-950/80 border border-white/15 text-slate-300 hover:text-white flex items-center justify-center backdrop-blur-md shadow-lg cursor-pointer flex-shrink-0"
+                className="w-10 h-10 rounded-full bg-stone-950/80 border border-white/15 text-stone-300 hover:text-white flex items-center justify-center backdrop-blur-md shadow-lg cursor-pointer flex-shrink-0"
               >
                 <X className="w-5 h-5" />
               </motion.button>
@@ -221,7 +221,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                 <button
                   type="button"
                   onClick={handlePrev}
-                  className="w-9 h-9 rounded-full bg-slate-950/80 border border-white/15 text-slate-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer flex-shrink-0"
+                  className="w-9 h-9 rounded-full bg-stone-950/80 border border-white/15 text-stone-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer flex-shrink-0"
                 >
                   <ChevronLeft className="w-5 h-5 rtl:rotate-180" />
                 </button>
@@ -236,7 +236,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                         onClick={() => setActiveIndex(index)}
                         className={`w-14 sm:w-18 h-20 sm:h-24 rounded-xl overflow-hidden cursor-pointer transition-all duration-300 flex-shrink-0 ${
                           isActive
-                            ? "border-2 border-emerald-400 shadow-lg shadow-emerald-500/30 scale-105 opacity-100"
+                            ? "border-2 border-amber-400 shadow-lg shadow-amber-500/30 scale-105 opacity-100"
                             : "border border-white/10 opacity-40 hover:opacity-80 scale-95"
                         }`}
                       >
@@ -254,7 +254,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="w-9 h-9 rounded-full bg-slate-950/80 border border-white/15 text-slate-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer flex-shrink-0"
+                  className="w-9 h-9 rounded-full bg-stone-950/80 border border-white/15 text-stone-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer flex-shrink-0"
                 >
                   <ChevronRight className="w-5 h-5 rtl:rotate-180" />
                 </button>
@@ -270,8 +270,8 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                       onClick={() => setActiveIndex(index)}
                       className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                         isActive
-                          ? "w-6 bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.7)]"
-                          : "w-2 bg-slate-700 hover:bg-slate-500"
+                          ? "w-6 bg-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.7)]"
+                          : "w-2 bg-stone-700 hover:bg-stone-500"
                       }`}
                     />
                   );
@@ -284,20 +284,20 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
               {/* Specs & Amenities Tags */}
               <div className="flex flex-col gap-3">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-950/80 border border-white/10 text-white text-xs font-medium">
-                    <Users className="w-3.5 h-3.5 text-emerald-400" />
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-950/80 border border-white/10 text-white text-xs font-medium">
+                    <Users className="w-3.5 h-3.5 text-amber-400" />
                     <span>{selectedBungalow.capacity} {t("bungalows.guests")}</span>
                   </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-950/80 border border-white/10 text-white text-xs font-medium">
-                    <Maximize2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-950/80 border border-white/10 text-white text-xs font-medium">
+                    <Maximize2 className="w-3.5 h-3.5 text-amber-400" />
                     <span>{selectedBungalow.sqm} m²</span>
                   </span>
                   {selectedBungalow.amenities.map((item, idx) => (
                     <span
                       key={idx}
-                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-medium"
+                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-medium"
                     >
-                      <Check className="w-3 h-3 text-emerald-400" />
+                      <Check className="w-3 h-3 text-amber-400" />
                       {item}
                     </span>
                   ))}
@@ -311,7 +311,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                   whileTap={{ scale: 0.95 }}
                   transition={SPRING_TRANSITION}
                   onClick={handleWhatsAppBooking}
-                  className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-sm tracking-wide shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                  className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-600 via-amber-500 to-orange-500 hover:from-amber-500 hover:to-orange-400 text-white font-bold text-sm tracking-wide shadow-[0_0_25px_rgba(245,158,11,0.4)] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>{t("bungalows.bookNow")}</span>
                   <ArrowRight className="w-4 h-4 rtl:rotate-180" />

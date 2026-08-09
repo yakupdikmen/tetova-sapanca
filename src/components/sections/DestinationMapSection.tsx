@@ -29,7 +29,7 @@ const AdvancedMap = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-[600px] rounded-3xl bg-slate-900 border border-white/10 flex items-center justify-center text-slate-400 font-medium animate-pulse">
+      <div className="w-full h-[600px] rounded-3xl bg-stone-900 border border-white/10 flex items-center justify-center text-stone-400 font-medium animate-pulse">
         Interactive Map...
       </div>
     ),
@@ -91,21 +91,21 @@ export const DestinationMapSection: React.FC<DestinationMapSectionProps> = () =>
   };
 
   return (
-    <section className="relative bg-[#FAF8F5] dark:bg-slate-950 py-24 px-4 sm:px-6 lg:px-8 overflow-hidden text-slate-900 dark:text-white border-t border-amber-900/5 dark:border-white/5 transition-colors duration-300">
+    <section className="relative bg-[#FAF8F5] dark:bg-stone-950 py-24 px-4 sm:px-6 lg:px-8 overflow-hidden text-stone-900 dark:text-white border-t border-amber-900/5 dark:border-white/5 transition-colors duration-300">
       {/* Background Decor Radial Glow */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[400px] bg-emerald-500/10 dark:bg-emerald-950/20 rounded-full filter blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[400px] bg-amber-500/10 dark:bg-amber-950/20 rounded-full filter blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full backdrop-blur-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-widest mb-4">
-            <Compass className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full backdrop-blur-md bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-semibold uppercase tracking-widest mb-4">
+            <Compass className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
             <span>{t("destinations.badge")}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-stone-900 dark:text-white tracking-tight leading-tight">
             {t("destinations.title")}
           </h2>
-          <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg mt-4 font-normal leading-relaxed">
+          <p className="text-stone-600 dark:text-stone-300 text-base sm:text-lg mt-4 font-normal leading-relaxed">
             {t("destinations.subtitle")}
           </p>
 
@@ -121,8 +121,8 @@ export const DestinationMapSection: React.FC<DestinationMapSectionProps> = () =>
                   onClick={() => setSelectedCategory(cat.id)}
                   className={`relative px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
                     isActive
-                      ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/30 scale-105"
-                      : "bg-white dark:bg-slate-900/60 text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-white/10 hover:border-emerald-500/40 shadow-sm"
+                      ? "bg-amber-600 text-white shadow-lg shadow-amber-600/30 scale-105"
+                      : "bg-white dark:bg-stone-900/60 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-white/10 hover:border-amber-500/40 shadow-sm"
                   }`}
                 >
                   <IconComponent className="w-3.5 h-3.5" />
@@ -149,20 +149,20 @@ export const DestinationMapSection: React.FC<DestinationMapSectionProps> = () =>
                   transition={SPRING_TRANSITION}
                   className={`group relative p-4 rounded-2xl transition-all duration-300 cursor-pointer shadow-md ${
                     isSelected
-                      ? "bg-white dark:bg-slate-900/90 border-transparent ring-2 ring-emerald-500 dark:ring-emerald-400 shadow-[0_10px_30px_-10px_rgba(16,185,129,0.3)]"
-                      : "bg-white dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 hover:border-emerald-500/40 hover:shadow-xl"
+                      ? "bg-white dark:bg-stone-900/90 border-transparent ring-2 ring-amber-500 dark:ring-amber-400 shadow-[0_10px_30px_-10px_rgba(245,158,11,0.3)]"
+                      : "bg-white dark:bg-stone-900/60 border border-stone-200/80 dark:border-white/10 hover:border-amber-500/40 hover:shadow-xl"
                   }`}
                 >
                   <div className="flex gap-4 items-center">
                     {/* Spot Image */}
-                    <div className="relative w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 bg-slate-900">
+                    <div className="relative w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 bg-stone-900">
                       <img
                         src={spot.image}
                         alt={spot.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute top-1.5 ltr:left-1.5 rtl:right-1.5">
-                        <span className="px-2 py-0.5 rounded-full bg-slate-950/80 backdrop-blur-md text-[10px] font-bold text-amber-400 flex items-center gap-0.5">
+                        <span className="px-2 py-0.5 rounded-full bg-stone-950/80 backdrop-blur-md text-[10px] font-bold text-amber-400 flex items-center gap-0.5">
                           <Star className="w-2.5 h-2.5 fill-amber-400" />
                           {spot.rating}
                         </span>
@@ -173,27 +173,27 @@ export const DestinationMapSection: React.FC<DestinationMapSectionProps> = () =>
                     <div className="flex flex-col justify-between flex-1 min-w-0">
                       <div>
                         <div className="flex items-center justify-between gap-2 mb-1">
-                          <span className="text-[10px] font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                          <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
                             {spot.categoryLabel}
                           </span>
-                          <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 flex items-center gap-1">
-                            <Clock className="w-3 h-3 text-emerald-500" />
+                          <span className="text-[10px] font-medium text-stone-500 dark:text-stone-400 flex items-center gap-1">
+                            <Clock className="w-3 h-3 text-amber-500" />
                             {spot.durationMinutes} {t("destinations.minAway")}
                           </span>
                         </div>
 
-                        <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white truncate group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition-colors">
+                        <h3 className="text-sm sm:text-base font-bold text-stone-900 dark:text-white truncate group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors">
                           {spot.name}
                         </h3>
 
-                        <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 mt-1 font-normal">
+                        <p className="text-xs text-stone-600 dark:text-stone-400 line-clamp-2 mt-1 font-normal">
                           {spot.description}
                         </p>
                       </div>
 
                       {/* Distance & Directions CTA */}
-                      <div className="flex items-center justify-between mt-3 pt-2 border-t border-slate-100 dark:border-white/5">
-                        <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                      <div className="flex items-center justify-between mt-3 pt-2 border-t border-stone-100 dark:border-white/5">
+                        <span className="text-[11px] font-medium text-stone-500 dark:text-stone-400 flex items-center gap-1">
                           <MapPin className="w-3 h-3 text-rose-500" />
                           {spot.distance}
                         </span>
@@ -203,7 +203,7 @@ export const DestinationMapSection: React.FC<DestinationMapSectionProps> = () =>
                           target="_blank"
                           rel="noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 transition-colors"
+                          className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 dark:text-amber-400 hover:text-amber-500 transition-colors"
                         >
                           <span>{t("destinations.getDirections")}</span>
                           <ExternalLink className="w-3 h-3 rtl:rotate-180" />

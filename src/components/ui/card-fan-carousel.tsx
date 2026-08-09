@@ -99,8 +99,8 @@ export const SocialCards: React.FC<SocialCardsProps> = ({
               onClick={() => handleCardClick(index)}
               className={`absolute w-[220px] sm:w-[270px] h-[300px] sm:h-[360px] rounded-3xl overflow-hidden border transition-all duration-300 cursor-pointer shadow-[0_20px_40px_rgba(0,0,0,0.6)] ${
                 isActive
-                  ? "border-emerald-500 shadow-[0_25px_50px_rgba(16,185,129,0.4)]"
-                  : "border-white/15 bg-slate-900/80 backdrop-blur-xl opacity-95 hover:border-white/30"
+                  ? "border-amber-500 shadow-[0_25px_50px_rgba(245,158,11,0.4)]"
+                  : "border-white/15 bg-stone-900/80 backdrop-blur-xl opacity-95 hover:border-white/30"
               }`}
             >
               {/* Card Image */}

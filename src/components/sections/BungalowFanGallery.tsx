@@ -55,24 +55,24 @@ export const BungalowFanGallery: React.FC<BungalowFanGalleryProps> = ({
   cards = BUNGALOW_FAN_CARDS,
 }) => {
   return (
-    <section className="relative bg-slate-950 py-20 px-4 sm:px-6 lg:px-8 overflow-hidden text-white border-t border-white/5">
+    <section className="relative bg-[#FAF8F5] dark:bg-stone-950 py-20 px-4 sm:px-6 lg:px-8 overflow-hidden text-stone-900 dark:text-white border-t border-amber-900/5 dark:border-white/5 transition-colors duration-300">
       {/* Glow Orbs */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-emerald-950/20 rounded-full filter blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-amber-500/10 dark:bg-amber-950/20 rounded-full filter blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full backdrop-blur-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-widest mb-4">
-            <Camera className="w-3.5 h-3.5 text-emerald-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full backdrop-blur-md bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-semibold uppercase tracking-widest mb-4">
+            <Camera className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
             <span>CANLI GALERİ SEÇKİSİ</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-stone-900 dark:text-white tracking-tight leading-tight">
             360° Doğa İçi <br className="hidden sm:inline" />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 via-orange-600 to-rose-600 dark:from-amber-400 dark:via-orange-300 dark:to-rose-400">
               Bungalov Yaşamı
             </span>
           </h2>
-          <p className="text-slate-300 text-base sm:text-lg mt-4 font-normal leading-relaxed">
+          <p className="text-stone-600 dark:text-stone-300 text-base sm:text-lg mt-4 font-normal leading-relaxed">
             Tetova Sapanca'nın en sevilen detaylarını ve misafirlerimizin unutulmaz anlarını interaktif kart destesinde keşfedin.
           </p>
         </div>

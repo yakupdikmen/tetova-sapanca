@@ -116,14 +116,14 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-50 bg-slate-950 flex items-center justify-center overflow-hidden selection:bg-emerald-500 selection:text-white"
+          className="fixed inset-0 z-50 bg-stone-950 flex items-center justify-center overflow-hidden selection:bg-amber-500 selection:text-white"
         >
           {/* Layer 1: Base Layer Fullscreen CloudPano iFrame */}
           <div className="relative w-full h-full">
             <iframe
               src={tourUrl}
               title="360° Virtual Tour"
-              className="w-full h-full border-none bg-slate-950"
+              className="w-full h-full border-none bg-stone-950"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; vr"
               allowFullScreen
             />
@@ -135,19 +135,19 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
             <div className="flex items-start justify-between gap-4">
               {/* Top-Left: Live Status Badge & Quick Scene Selector */}
               <div className="flex flex-col gap-3 pointer-events-auto">
-                <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full backdrop-blur-xl bg-slate-900/80 border border-white/15 text-white shadow-2xl">
+                <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full backdrop-blur-xl bg-stone-900/80 border border-white/15 text-white shadow-2xl">
                   <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500" />
                   </span>
                   <span className="text-xs font-extrabold tracking-wider uppercase flex items-center gap-1.5">
-                    <Compass className="w-3.5 h-3.5 text-emerald-400 animate-spin-slow" />
+                    <Compass className="w-3.5 h-3.5 text-amber-400 animate-spin-slow" />
                     <span>{t("tour.liveBadge")}</span>
                   </span>
                 </div>
 
                 {/* Scene Selector Pills */}
-                <div className="hidden sm:flex flex-wrap items-center gap-2 p-1.5 rounded-2xl backdrop-blur-xl bg-slate-900/80 border border-white/10 shadow-xl">
+                <div className="hidden sm:flex flex-wrap items-center gap-2 p-1.5 rounded-2xl backdrop-blur-xl bg-stone-900/80 border border-white/10 shadow-xl">
                   {scenePresets.map((scene) => {
                     const IconComp = scene.icon;
                     const isActive = activeScene === scene.id;
@@ -161,8 +161,8 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
                         onClick={() => setActiveScene(scene.id)}
                         className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-300 cursor-pointer ${
                           isActive
-                            ? "bg-emerald-500 text-slate-950 shadow-md"
-                            : "text-slate-300 hover:text-white hover:bg-white/10"
+                            ? "bg-amber-500 text-stone-950 shadow-md"
+                            : "text-stone-300 hover:text-white hover:bg-white/10"
                         }`}
                       >
                         <IconComp className="w-3.5 h-3.5" />
@@ -182,7 +182,7 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
                   type="button"
                   onClick={toggleFullscreen}
                   title={t("tour.fullscreen")}
-                  className="w-11 h-11 rounded-2xl backdrop-blur-xl bg-slate-900/80 border border-white/15 text-slate-300 hover:text-white flex items-center justify-center shadow-xl cursor-pointer"
+                  className="w-11 h-11 rounded-2xl backdrop-blur-xl bg-stone-900/80 border border-white/15 text-stone-300 hover:text-white flex items-center justify-center shadow-xl cursor-pointer"
                 >
                   {isFullscreen ? (
                     <Minimize2 className="w-5 h-5" />
@@ -198,7 +198,7 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
                   type="button"
                   onClick={onClose}
                   title={t("tour.close")}
-                  className="w-11 h-11 rounded-2xl backdrop-blur-xl bg-slate-900/80 border border-white/15 text-slate-300 hover:text-white flex items-center justify-center shadow-xl cursor-pointer"
+                  className="w-11 h-11 rounded-2xl backdrop-blur-xl bg-stone-900/80 border border-white/15 text-stone-300 hover:text-white flex items-center justify-center shadow-xl cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </motion.button>
@@ -215,8 +215,8 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
                   transition={SPRING_TRANSITION}
                   className="self-center pointer-events-none mb-auto mt-auto"
                 >
-                  <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full backdrop-blur-2xl bg-slate-900/85 border border-emerald-500/30 text-white shadow-[0_0_30px_rgba(16,185,129,0.3)] animate-pulse">
-                    <MoveHorizontal className="w-5 h-5 text-emerald-400" />
+                  <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full backdrop-blur-2xl bg-stone-900/85 border border-amber-500/30 text-white shadow-[0_0_30px_rgba(245,158,11,0.3)] animate-pulse">
+                    <MoveHorizontal className="w-5 h-5 text-amber-400" />
                     <span className="text-xs sm:text-sm font-semibold tracking-wide">
                       {t("tour.dragPrompt")}
                     </span>
@@ -229,7 +229,7 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
             <div className="flex items-end justify-between w-full">
               {/* Bottom-Left: Location Info */}
               <div className="hidden md:flex flex-col gap-1 pointer-events-auto">
-                <span className="text-xs text-emerald-400 font-semibold tracking-wider uppercase flex items-center gap-1">
+                <span className="text-xs text-amber-400 font-semibold tracking-wider uppercase flex items-center gap-1">
                   <MapPin className="w-3.5 h-3.5" />
                   Kırkpınar, Sapanca
                 </span>
@@ -240,7 +240,7 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
 
               {/* Bottom-Right Sticky Card: Reservation Widget */}
               <div className="pointer-events-auto ltr:ml-auto rtl:mr-auto">
-                <div className="bg-slate-900/80 backdrop-blur-xl border border-emerald-500/20 p-4 sm:p-5 rounded-2xl max-w-sm w-full shadow-2xl flex flex-col gap-3">
+                <div className="bg-stone-900/80 backdrop-blur-xl border border-amber-500/20 p-4 sm:p-5 rounded-2xl max-w-sm w-full shadow-2xl flex flex-col gap-3">
                   <div className="flex items-center gap-3">
                     <img
                       src={displayBungalow.image}
@@ -275,7 +275,7 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
                       if (onBookNow) onBookNow(displayBungalow);
                       onClose();
                     }}
-                    className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-xs sm:text-sm tracking-wide shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-600 via-amber-500 to-orange-500 hover:from-amber-500 hover:to-orange-400 text-white font-bold text-xs sm:text-sm tracking-wide shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>{t("tour.bookWhatsapp")}</span>
                     <ArrowRight className="w-4 h-4 rtl:rotate-180" />

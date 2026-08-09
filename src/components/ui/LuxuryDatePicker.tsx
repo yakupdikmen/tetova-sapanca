@@ -140,8 +140,8 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
 
   return (
     <div ref={containerRef} className={`relative ${isOpen ? "z-50" : "z-10"} flex flex-col gap-2 ${className}`}>
-      <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-        <CalendarIcon className="w-4 h-4 text-emerald-400" />
+      <label className="text-xs font-semibold text-stone-300 uppercase tracking-wider flex items-center gap-1.5">
+        <CalendarIcon className="w-4 h-4 text-amber-400" />
         <span>{label}</span>
       </label>
 
@@ -149,12 +149,12 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full bg-slate-800/90 hover:bg-slate-800 border border-white/15 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm font-semibold text-white transition-all flex items-center justify-between shadow-lg cursor-pointer group"
+        className="w-full bg-stone-800/90 hover:bg-stone-800 border border-white/15 focus:border-amber-500 rounded-xl px-4 py-3 text-sm font-semibold text-white transition-all flex items-center justify-between shadow-lg cursor-pointer group"
       >
         <span className="truncate">{formatDateDisplay(value)}</span>
         <ChevronRight
-          className={`w-4 h-4 text-slate-400 group-hover:text-white transition-transform duration-300 ${
-            isOpen ? "rotate-90 text-emerald-400" : ""
+          className={`w-4 h-4 text-stone-400 group-hover:text-white transition-transform duration-300 ${
+            isOpen ? "rotate-90 text-amber-400" : ""
           }`}
         />
       </button>
@@ -167,35 +167,35 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 350, damping: 25 }}
-            className="absolute left-1/2 -translate-x-1/2 sm:left-0 sm:translate-x-0 top-full mt-2.5 z-[100] bg-slate-900/98 dark:bg-slate-950/98 backdrop-blur-3xl border border-white/20 p-4 sm:p-5 rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.85)] w-[310px] sm:w-[330px] text-white"
+            className="absolute left-1/2 -translate-x-1/2 sm:left-0 sm:translate-x-0 top-full mt-2.5 z-[100] bg-stone-900/98 dark:bg-stone-950/98 backdrop-blur-3xl border border-white/20 p-4 sm:p-5 rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.85)] w-[310px] sm:w-[330px] text-white"
           >
             {/* Quick Presets Ribbon */}
             <div className="flex items-center gap-1.5 pb-3.5 mb-3 border-b border-white/10 overflow-x-auto text-[11px] font-medium [scrollbar-width:none]">
               <button
                 type="button"
                 onClick={() => handleQuickSelect(0)}
-                className="px-2.5 py-1 rounded-full bg-white/10 hover:bg-emerald-500/20 hover:text-emerald-300 border border-white/10 transition-colors whitespace-nowrap"
+                className="px-2.5 py-1 rounded-full bg-white/10 hover:bg-amber-500/20 hover:text-amber-300 border border-white/10 transition-colors whitespace-nowrap"
               >
                 {t("datePicker.today")}
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickSelect(1)}
-                className="px-2.5 py-1 rounded-full bg-white/10 hover:bg-emerald-500/20 hover:text-emerald-300 border border-white/10 transition-colors whitespace-nowrap"
+                className="px-2.5 py-1 rounded-full bg-white/10 hover:bg-amber-500/20 hover:text-amber-300 border border-white/10 transition-colors whitespace-nowrap"
               >
                 {t("datePicker.tomorrow")}
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickSelect(3)}
-                className="px-2.5 py-1 rounded-full bg-white/10 hover:bg-emerald-500/20 hover:text-emerald-300 border border-white/10 transition-colors whitespace-nowrap"
+                className="px-2.5 py-1 rounded-full bg-white/10 hover:bg-amber-500/20 hover:text-amber-300 border border-white/10 transition-colors whitespace-nowrap"
               >
                 {t("datePicker.threeDays")}
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickSelect(7)}
-                className="px-2.5 py-1 rounded-full bg-white/10 hover:bg-emerald-500/20 hover:text-emerald-300 border border-white/10 transition-colors whitespace-nowrap"
+                className="px-2.5 py-1 rounded-full bg-white/10 hover:bg-amber-500/20 hover:text-amber-300 border border-white/10 transition-colors whitespace-nowrap"
               >
                 {t("datePicker.nextWeek")}
               </button>
@@ -206,7 +206,7 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
               <button
                 type="button"
                 onClick={handlePrevMonth}
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-emerald-500 hover:text-slate-950 flex items-center justify-center transition-colors cursor-pointer"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-amber-500 hover:text-stone-950 flex items-center justify-center transition-colors cursor-pointer"
               >
                 <ChevronLeft className="w-4 h-4 rtl:rotate-180" />
               </button>
@@ -218,14 +218,14 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
               <button
                 type="button"
                 onClick={handleNextMonth}
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-emerald-500 hover:text-slate-950 flex items-center justify-center transition-colors cursor-pointer"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-amber-500 hover:text-stone-950 flex items-center justify-center transition-colors cursor-pointer"
               >
                 <ChevronRight className="w-4 h-4 rtl:rotate-180" />
               </button>
             </div>
 
             {/* Weekday Names Header */}
-            <div className="grid grid-cols-7 gap-1 text-center text-[11px] font-semibold text-slate-400 mb-2">
+            <div className="grid grid-cols-7 gap-1 text-center text-[11px] font-semibold text-stone-400 mb-2">
               {weekdayNames.map((name) => (
                 <div key={name}>{name}</div>
               ))}
@@ -252,10 +252,10 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
                     onClick={() => handleSelectDay(dayNum)}
                     className={`h-9 rounded-xl text-xs font-bold transition-all duration-200 flex items-center justify-center cursor-pointer ${
                       selected
-                        ? "bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 shadow-[0_0_15px_rgba(16,185,129,0.5)] scale-105"
+                        ? "bg-gradient-to-r from-amber-500 to-orange-400 text-stone-950 shadow-[0_0_15px_rgba(245,158,11,0.5)] scale-105"
                         : disabled
-                        ? "opacity-25 cursor-not-allowed text-slate-500"
-                        : "hover:bg-emerald-500/20 hover:text-emerald-300 text-slate-200"
+                        ? "opacity-25 cursor-not-allowed text-stone-500"
+                        : "hover:bg-amber-500/20 hover:text-amber-300 text-stone-200"
                     }`}
                   >
                     {dayNum}

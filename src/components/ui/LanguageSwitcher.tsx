@@ -48,14 +48,14 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-900/10 dark:bg-white/10 hover:bg-slate-900/20 dark:hover:bg-white/20 border border-black/5 dark:border-white/15 backdrop-blur-md text-slate-800 dark:text-white font-semibold text-xs sm:text-sm transition-all duration-200 shadow-sm cursor-pointer"
+        className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-stone-900/10 dark:bg-white/10 hover:bg-stone-900/20 dark:hover:bg-white/20 border border-black/5 dark:border-white/15 backdrop-blur-md text-stone-800 dark:text-white font-semibold text-xs sm:text-sm transition-all duration-200 shadow-sm cursor-pointer"
         title="Dil Seçimi / Change Language"
       >
         <span className="text-base leading-none">{currentLangObj.flag}</span>
         <span className="uppercase tracking-wider font-bold text-xs">{currentLangObj.code}</span>
         <ChevronDown
-          className={`w-3.5 h-3.5 text-slate-500 dark:text-slate-400 transition-transform duration-200 ${
-            isOpen ? "rotate-180 text-emerald-500" : ""
+          className={`w-3.5 h-3.5 text-stone-500 dark:text-stone-400 transition-transform duration-200 ${
+            isOpen ? "rotate-180 text-amber-500" : ""
           }`}
         />
       </button>
@@ -68,7 +68,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 4, scale: 0.95 }}
             transition={{ duration: 0.15 }}
-            className="absolute right-0 sm:right-0 ltr:right-0 rtl:left-0 top-full mt-2 w-40 bg-slate-900/95 dark:bg-slate-950/95 backdrop-blur-2xl border border-white/20 p-1.5 rounded-2xl shadow-2xl z-[100] text-white"
+            className="absolute right-0 sm:right-0 ltr:right-0 rtl:left-0 top-full mt-2 w-40 bg-stone-900/95 dark:bg-stone-950/95 backdrop-blur-2xl border border-white/20 p-1.5 rounded-2xl shadow-2xl z-[100] text-white"
           >
             {LANGUAGES.map((lang) => {
               const isSelected = lang.code === language;
@@ -79,15 +79,15 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
                   onClick={() => handleSelect(lang.code)}
                   className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 cursor-pointer ${
                     isSelected
-                      ? "bg-emerald-500 text-slate-950 font-bold shadow-md shadow-emerald-500/20"
-                      : "hover:bg-white/10 text-slate-200"
+                      ? "bg-amber-500 text-stone-950 font-bold shadow-md shadow-amber-500/20"
+                      : "hover:bg-white/10 text-stone-200"
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
                     <span className="text-base leading-none">{lang.flag}</span>
                     <span>{lang.name}</span>
                   </div>
-                  {isSelected && <Check className="w-3.5 h-3.5 text-slate-950 stroke-[3]" />}
+                  {isSelected && <Check className="w-3.5 h-3.5 text-stone-950 stroke-[3]" />}
                 </button>
               );
             })}

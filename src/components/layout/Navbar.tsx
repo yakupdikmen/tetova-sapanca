@@ -40,8 +40,8 @@ export const Navbar: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-black/5 dark:border-white/10 text-slate-900 dark:text-slate-100 shadow-xl py-3.5"
-          : "bg-gradient-to-b from-slate-950/80 to-transparent text-white py-5"
+          ? "bg-white/80 dark:bg-stone-900/80 backdrop-blur-md border-b border-black/5 dark:border-white/10 text-stone-900 dark:text-stone-100 shadow-xl py-3.5"
+          : "bg-gradient-to-b from-stone-950/80 to-transparent text-white py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -74,21 +74,21 @@ export const Navbar: React.FC = () => {
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className={`hidden md:flex items-center gap-7 text-sm font-medium ${isScrolled ? "text-slate-800 dark:text-slate-200" : "text-white/90"}`}>
-          <a href="#" onClick={(e) => handleNavClick(e, "#")} className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 cursor-pointer">
-            <Home className="w-4 h-4 text-emerald-400" />
+        <nav className={`hidden md:flex items-center gap-7 text-sm font-medium ${isScrolled ? "text-stone-800 dark:text-stone-200" : "text-white/90"}`}>
+          <a href="#" onClick={(e) => handleNavClick(e, "#")} className="hover:text-amber-400 transition-colors flex items-center gap-1.5 cursor-pointer">
+            <Home className="w-4 h-4 text-amber-400" />
             <span>{t("nav.home")}</span>
           </a>
-          <a href="#bungalows" onClick={(e) => handleNavClick(e, "#bungalows")} className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 cursor-pointer">
-            <Trees className="w-4 h-4 text-emerald-400" />
+          <a href="#bungalows" onClick={(e) => handleNavClick(e, "#bungalows")} className="hover:text-amber-400 transition-colors flex items-center gap-1.5 cursor-pointer">
+            <Trees className="w-4 h-4 text-amber-400" />
             <span>{t("nav.bungalows")}</span>
           </a>
-          <a href="#blog" onClick={(e) => handleNavClick(e, "#blog")} className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 cursor-pointer">
-            <BookOpen className="w-4 h-4 text-emerald-400" />
+          <a href="#blog" onClick={(e) => handleNavClick(e, "#blog")} className="hover:text-amber-400 transition-colors flex items-center gap-1.5 cursor-pointer">
+            <BookOpen className="w-4 h-4 text-amber-400" />
             <span>{t("nav.guide")}</span>
           </a>
-          <a href="#faq" onClick={(e) => handleNavClick(e, "#faq")} className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 cursor-pointer">
-            <HelpCircle className="w-4 h-4 text-emerald-400" />
+          <a href="#faq" onClick={(e) => handleNavClick(e, "#faq")} className="hover:text-amber-400 transition-colors flex items-center gap-1.5 cursor-pointer">
+            <HelpCircle className="w-4 h-4 text-amber-400" />
             <span>{t("nav.faq")}</span>
           </a>
         </nav>
@@ -104,11 +104,11 @@ export const Navbar: React.FC = () => {
             title={t("nav.callUs")}
             className={`inline-flex items-center justify-center w-10 h-10 rounded-xl border backdrop-blur-md transition-all duration-300 shadow-md ${
               isScrolled
-                ? "bg-slate-900/10 dark:bg-white/10 border-black/5 dark:border-white/15 text-slate-900 dark:text-white"
+                ? "bg-stone-900/10 dark:bg-white/10 border-black/5 dark:border-white/15 text-stone-900 dark:text-white"
                 : "bg-white/15 border-white/20 text-white hover:bg-white/25"
             }`}
           >
-            <Phone className="w-4 h-4 text-emerald-400" />
+            <Phone className="w-4 h-4 text-amber-400" />
           </a>
         </div>
 
@@ -122,8 +122,8 @@ export const Navbar: React.FC = () => {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className={`w-10 h-10 rounded-xl border flex items-center justify-center cursor-pointer ${
               isScrolled
-                ? "bg-white/70 dark:bg-slate-900 border-black/5 dark:border-white/10 text-slate-900 dark:text-slate-100"
-                : "bg-slate-900/60 border-white/20 text-white"
+                ? "bg-white/70 dark:bg-stone-900 border-black/5 dark:border-white/10 text-stone-900 dark:text-stone-100"
+                : "bg-stone-900/60 border-white/20 text-white"
             }`}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -133,13 +133,13 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-slate-950/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 flex flex-col gap-4 mt-3">
+        <div className="md:hidden bg-stone-950/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 flex flex-col gap-4 mt-3">
           <a
             href="#"
             onClick={(e) => handleNavClick(e, "#")}
             className="text-base font-semibold text-white py-2 border-b border-white/5 flex items-center gap-2"
           >
-            <Home className="w-4 h-4 text-emerald-400" />
+            <Home className="w-4 h-4 text-amber-400" />
             <span>{t("nav.home")}</span>
           </a>
           <a
@@ -147,7 +147,7 @@ export const Navbar: React.FC = () => {
             onClick={(e) => handleNavClick(e, "#bungalows")}
             className="text-base font-semibold text-white py-2 border-b border-white/5 flex items-center gap-2"
           >
-            <Trees className="w-4 h-4 text-emerald-400" />
+            <Trees className="w-4 h-4 text-amber-400" />
             <span>{t("nav.bungalows")}</span>
           </a>
           <a
@@ -155,7 +155,7 @@ export const Navbar: React.FC = () => {
             onClick={(e) => handleNavClick(e, "#blog")}
             className="text-base font-semibold text-white py-2 border-b border-white/5 flex items-center gap-2"
           >
-            <BookOpen className="w-4 h-4 text-emerald-400" />
+            <BookOpen className="w-4 h-4 text-amber-400" />
             <span>{t("nav.guide")}</span>
           </a>
           <a
@@ -163,12 +163,12 @@ export const Navbar: React.FC = () => {
             onClick={(e) => handleNavClick(e, "#faq")}
             className="text-base font-semibold text-white py-2 border-b border-white/5 flex items-center gap-2"
           >
-            <HelpCircle className="w-4 h-4 text-emerald-400" />
+            <HelpCircle className="w-4 h-4 text-amber-400" />
             <span>{t("nav.faq")}</span>
           </a>
           <a
             href="tel:+905337182524"
-            className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-emerald-600 text-white font-semibold text-sm mt-2"
+            className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-amber-600 text-white font-semibold text-sm mt-2"
           >
             <Phone className="w-4 h-4" />
             <span>{t("nav.callUs")}</span>

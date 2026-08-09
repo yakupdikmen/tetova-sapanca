@@ -39,9 +39,9 @@ export const Footer: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="relative bg-[#FDFBF7] dark:bg-slate-950 text-slate-900 dark:text-slate-100 border-t border-amber-900/10 dark:border-white/10 overflow-hidden transition-colors duration-300">
+    <footer className="relative bg-[#FDFBF7] dark:bg-stone-950 text-stone-900 dark:text-stone-100 border-t border-amber-900/10 dark:border-white/10 overflow-hidden transition-colors duration-300">
       {/* Background Decor Radial Glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-emerald-500/10 dark:bg-emerald-950/20 rounded-full filter blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-amber-500/10 dark:bg-amber-950/20 rounded-full filter blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-amber-900/10 dark:border-white/10">
@@ -66,7 +66,7 @@ export const Footer: React.FC = () => {
               />
             </a>
 
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-sm">
+            <p className="text-sm text-stone-600 dark:text-stone-400 leading-relaxed max-w-sm">
               {t("footer.description")}
             </p>
 
@@ -104,27 +104,27 @@ export const Footer: React.FC = () => {
 
           {/* Quick Links Column */}
           <div className="flex flex-col gap-3 ltr:text-left rtl:text-right">
-            <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+            <h4 className="text-sm font-bold text-stone-900 dark:text-white uppercase tracking-wider">
               {t("footer.quickLinks")}
             </h4>
-            <ul className="flex flex-col gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+            <ul className="flex flex-col gap-2.5 text-xs sm:text-sm text-stone-600 dark:text-stone-400">
               <li>
-                <a href="#" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                <a href="#" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
                   {t("nav.home")}
                 </a>
               </li>
               <li>
-                <a href="#bungalows" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                <a href="#bungalows" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
                   {t("nav.bungalows")}
                 </a>
               </li>
               <li>
-                <a href="#blog" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                <a href="#blog" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
                   {t("nav.guide")}
                 </a>
               </li>
               <li>
-                <a href="#faq" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                <a href="#faq" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
                   {t("nav.faq")}
                 </a>
               </li>
@@ -133,10 +133,10 @@ export const Footer: React.FC = () => {
 
           {/* Bungalow Models Column */}
           <div className="flex flex-col gap-3 ltr:text-left rtl:text-right">
-            <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+            <h4 className="text-sm font-bold text-stone-900 dark:text-white uppercase tracking-wider">
               {t("footer.bungalowsTitle")}
             </h4>
-            <ul className="flex flex-col gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+            <ul className="flex flex-col gap-2.5 text-xs sm:text-sm text-stone-600 dark:text-stone-400">
               <li>{t("bungalows.categories.platin")}</li>
               <li>{t("bungalows.categories.gold")}</li>
               <li>{t("bungalows.categories.silver")}</li>
@@ -146,30 +146,30 @@ export const Footer: React.FC = () => {
 
           {/* Contact Column */}
           <div className="flex flex-col gap-3 ltr:text-left rtl:text-right">
-            <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+            <h4 className="text-sm font-bold text-stone-900 dark:text-white uppercase tracking-wider">
               {t("footer.contactTitle")}
             </h4>
-            <div className="flex flex-col gap-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+            <div className="flex flex-col gap-3 text-xs sm:text-sm text-stone-600 dark:text-stone-400">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                 <a
                   href="https://www.google.com/maps/place/Tetova+Sapanca+Bungalov/@40.6883377,30.1949589,17z/data=!3m1!4b1!4m6!3m5!1s0x14cca742addd099d:0xa2c6bb62c910ee12!8m2!3d40.6883377!4d30.1975338!16s%2Fg%2F11w3mdlzpc?entry=ttu"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                  className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
                 >
                   {t("footer.address")}
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
-                <a href="tel:+905337182524" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                <Phone className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0" />
+                <a href="tel:+905337182524" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
                   {t("nav.callUs")}
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
-                <a href="mailto:sapancatetova@gmail.com" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                <Mail className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0" />
+                <a href="mailto:sapancatetova@gmail.com" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
                   sapancatetova@gmail.com
                 </a>
               </div>
@@ -178,7 +178,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar: Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500 dark:text-stone-400">
           <p>© {new Date().getFullYear()} Tetova Sapanca. {t("footer.rights")}</p>
           <div className="flex items-center gap-1">
             <span>Crafted with</span>

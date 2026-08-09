@@ -48,7 +48,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = "" }) => {
           {isDark ? (
             <Sun className="w-5 h-5 text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]" />
           ) : (
-            <Moon className="w-5 h-5 text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
+            <Moon className="w-5 h-5 text-orange-400 drop-shadow-[0_0_8px_rgba(251,146,60,0.6)]" />
           )}
         </motion.div>
       </AnimatePresence>
