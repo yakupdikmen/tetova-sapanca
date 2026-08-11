@@ -62,16 +62,16 @@ export const BungalowCard: React.FC<BungalowCardProps> = ({
 
   const getLocalizedTagline = () => {
     if (language === "ar") {
-      if (bungalow.id === "platin-villa") return "فيلا مالك فاخرة بمسابح دافئة على مدار الفصول وحفرة نار خاصة";
-      if (bungalow.id === "gold-bungalov") return "بنغل ذهبي بمسبح دافئ وإطلالة بانورامية";
-      if (bungalow.id === "silver-bungalov") return "بنغل فضي مريح بشرفة في أحضان الطبيعة";
-      if (bungalow.id === "bronz-bungalov") return "بنغل برونزي دافئ بحديقة خاصة وموقد نار ومواقف سيارات";
+      if (bungalow.id === "platin-villa") return "فيلا مالك فاخرة بمسابح دافئة على مدار الفصول وإطلالة بانورامية";
+      if (bungalow.id === "gold-bungalov") return "بنغل ذهبي بمسبح دافئ إنفينيتي وإطلالة بانورامية على البحيرة";
+      if (bungalow.id === "silver-bungalov") return "بنغل فضي بمسبح دافئ إنفينيتي وإطلالة بانورامية على البحيرة";
+      if (bungalow.id === "bronz-bungalov") return "بنغل برونزي دافئ بحديقة خاصة وإطلالة بانورامية على البحيرة";
     }
     if (language === "en") {
-      if (bungalow.id === "platin-villa") return "Tetova Sapanca's Most Exclusive VIP Mansion Villa with Heated Pool";
-      if (bungalow.id === "gold-bungalov") return "Gold Concept Bungalow with Heated Pool & Panoramic Nature Views";
-      if (bungalow.id === "silver-bungalov") return "Silver Concept Bungalow with Nature Terrace";
-      if (bungalow.id === "bronz-bungalov") return "Cozy & Warm Nature Concept Bronz Bungalow with Private Garden & BBQ";
+      if (bungalow.id === "platin-villa") return "Tetova Sapanca's Most Exclusive VIP Mansion Villa with Heated Pool & Lake View";
+      if (bungalow.id === "gold-bungalov") return "Gold Concept Bungalow with Heated Infinity Pool & Panoramic Lake View";
+      if (bungalow.id === "silver-bungalov") return "Silver Concept Bungalow with Heated Infinity Pool & Panoramic Lake View";
+      if (bungalow.id === "bronz-bungalov") return "Cozy Nature Concept Bronz Bungalow with Panoramic Lake View";
     }
     return bungalow.tagline;
   };
@@ -112,17 +112,11 @@ export const BungalowCard: React.FC<BungalowCardProps> = ({
           </span>
         </div>
 
-        {/* Rating Badge & 360 Tour Button */}
+        {/* 360 Tour Button */}
         <div className="flex items-center gap-2">
           {onOpenVirtualTour && (
             <VirtualTourButton onClick={onOpenVirtualTour} variant="card" />
           )}
-
-          <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-stone-900/70 border border-white/15 text-amber-400 text-xs font-semibold shadow-md">
-            <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-            <span>{bungalow.rating}</span>
-            <span className="text-stone-400 text-[11px]">({bungalow.reviewCount})</span>
-          </div>
         </div>
       </div>
 
@@ -143,10 +137,6 @@ export const BungalowCard: React.FC<BungalowCardProps> = ({
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-white/15 text-white text-xs font-medium">
             <Users className="w-3.5 h-3.5 text-amber-400" />
             <span>{bungalow.capacity} {t("bungalows.guests")}</span>
-          </span>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-white/15 text-white text-xs font-medium">
-            <Maximize2 className="w-3.5 h-3.5 text-amber-400" />
-            <span>{bungalow.sqm} m²</span>
           </span>
           {bungalow.amenities.slice(0, isFeatured ? 4 : 2).map((amenity, idx) => (
             <span

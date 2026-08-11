@@ -101,9 +101,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Background Image & Cinematic Gradient Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
-          src="/images/bungalows/platin-villa/1.jpeg"
+          src="/images/bg.jpeg"
           alt="Tetova Sapanca VIP Bungalov Manzarası"
-          className="w-full h-full object-cover object-center scale-105 filter brightness-[0.6] contrast-105"
+          className="w-full h-full object-cover object-center scale-105 filter brightness-[0.65] contrast-105"
         />
         {/* Full-bleed Smooth Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-stone-950/85 via-stone-950/50 to-[#FAF8F5] dark:to-stone-950 transition-colors duration-300" />

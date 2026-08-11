@@ -115,7 +115,7 @@ export const AmenitiesSection: React.FC<AmenitiesSectionProps> = () => {
   const amenityList: { title: string; desc: string }[] = (t("amenities.list") as any) || [
     {
       title: "4 Mevsim Isıtmalı Havuzlar",
-      desc: "Kışın en soğuk günlerinde bile 38°C sıcaklıkta kesintisiz açık hava havuz keyfi.",
+      desc: "Kışın en soğuk günlerinde bile 32°C sıcaklıkta kesintisiz açık hava havuz keyfi.",
     },
     {
       title: "%100 Mahrem Özel Bahçeler",

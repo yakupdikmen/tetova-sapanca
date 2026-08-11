@@ -183,10 +183,6 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                     <MapPin className="w-3.5 h-3.5 text-amber-400" />
                     Kırkpınar, Sapanca
                   </span>
-                  <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-stone-950/70 border border-white/10 text-amber-400 text-xs font-semibold">
-                    <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                    <span>{selectedBungalow.rating}</span>
-                  </div>
                 </div>
 
                 <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">
@@ -318,10 +314,6 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-950/80 border border-white/10 text-white text-xs font-medium">
                     <Users className="w-3.5 h-3.5 text-amber-400" />
                     <span>{selectedBungalow.capacity} {t("bungalows.guests")}</span>
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-950/80 border border-white/10 text-white text-xs font-medium">
-                    <Maximize2 className="w-3.5 h-3.5 text-amber-400" />
-                    <span>{selectedBungalow.sqm} m²</span>
                   </span>
                   {selectedBungalow.amenities.map((item, idx) => (
                     <span

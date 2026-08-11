@@ -76,7 +76,7 @@ export const translations = {
       list: [
         {
           title: "4 Mevsim Isıtmalı Havuzlar",
-          desc: "Kışın en soğuk günlerinde bile 38°C sıcaklıkta kesintisiz açık hava havuz keyfi.",
+          desc: "Kışın en soğuk günlerinde bile 32°C sıcaklıkta kesintisiz açık hava havuz keyfi.",
         },
         {
           title: "%100 Mahrem Özel Bahçeler",
@@ -227,7 +227,7 @@ export const translations = {
       list: [
         {
           title: "4-Season Heated Pools",
-          desc: "Uninterrupted outdoor swimming pool comfort at 38°C even on the coldest winter days.",
+          desc: "Uninterrupted outdoor swimming pool comfort at 32°C even on the coldest winter days.",
         },
         {
           title: "100% Private Secluded Gardens",
