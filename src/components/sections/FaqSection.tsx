@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, HelpCircle, Sparkles } from "lucide-react";
-import { FAQ_ITEMS, FaqItem } from "@/constants/faq";
+import { ChevronDown, HelpCircle } from "lucide-react";
+import { FaqItem, getFaqItems } from "@/constants/faq";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export interface FaqItemProps {
@@ -72,76 +72,15 @@ export const FaqAccordionItem: React.FC<FaqItemProps> = ({
 };
 
 export const FaqSection: React.FC<FaqSectionProps> = ({
-  faqs = FAQ_ITEMS,
+  faqs,
 }) => {
   const { t, language } = useLanguage();
-  const [openId, setOpenId] = useState<string | null>(faqs[0]?.id || null);
+  const currentFaqs = faqs || getFaqItems(language);
+  const [openId, setOpenId] = useState<string | null>(currentFaqs[0]?.id || null);
 
   const handleToggle = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));
   };
-
-  const getLocalizedFaqs = (): FaqItem[] => {
-    if (language === "ar") {
-      return [
-        {
-          id: "faq-1",
-          question: "هل المسابح دافئة في فصل الشتاء؟",
-          answer: "نعم، جميع بنغلاتنا مزودة بمسابح خاصة دافئة على مدار 4 فصول، وتحافظ على درجة حرارة 38 مئوية حتى في أبرد أيام الشتاء.",
-          category: "general",
-        },
-        {
-          id: "faq-2",
-          question: "هل الحدائق مستورة ومحاطة بخصو صية تامة؟",
-          answer: "نعم، جميع حدائق بنغلاتنا محاطة بأسوار خشبية وخضراء عالية، مما يضمن استقلالية وخصوصية تامة 100% بعيداً عن الأنظار الخارجية.",
-          category: "privacy",
-        },
-        {
-          id: "faq-3",
-          question: "ما هي أوقات تسجيل الوصول والمغادرة؟",
-          answer: "تسجيل الوصول يبدأ من الساعة 14:00 عصراً، والمغادرة حتى الساعة 11:00 صباحاً من أجل التعقيم والتنظيف الفاخر.",
-          category: "general",
-        },
-        {
-          id: "faq-4",
-          question: "هل الإفطار شائبة مع الإقامة؟",
-          answer: "نعم، نقدم وجبة إفطار قروية غنية ومجهزة يومياً طازجة إلى بنغلكم.",
-          category: "amenities",
-        },
-      ];
-    }
-    if (language === "en") {
-      return [
-        {
-          id: "faq-1",
-          question: "Are the swimming pools heated during winter?",
-          answer: "Yes! All of our VIP bungalows feature 4-season private heated outdoor pools maintained at a cozy 38°C year-round.",
-          category: "general",
-        },
-        {
-          id: "faq-2",
-          question: "Are the gardens 100% private and secluded?",
-          answer: "Absolutely. Each bungalow's private garden is completely enclosed by high privacy fences ensuring 100% confidentiality.",
-          category: "privacy",
-        },
-        {
-          id: "faq-3",
-          question: "What are the check-in and check-out times?",
-          answer: "Standard check-in starts at 14:00 and check-out is by 11:00 to allow thorough VIP sanitization.",
-          category: "general",
-        },
-        {
-          id: "faq-4",
-          question: "Is breakfast included in the stay?",
-          answer: "Yes, a complimentary organic village breakfast spread is freshly prepared and delivered to your bungalow daily.",
-          category: "amenities",
-        },
-      ];
-    }
-    return faqs;
-  };
-
-  const currentFaqs = getLocalizedFaqs();
 
   return (
     <section className="relative bg-[#FDFBF7] dark:bg-stone-950 py-24 px-4 sm:px-6 lg:px-8 overflow-hidden text-stone-900 dark:text-white border-t border-amber-900/5 dark:border-white/5 transition-colors duration-300">

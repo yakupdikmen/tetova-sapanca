@@ -25,9 +25,9 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
     date: "24 Temmuz 2026",
     author: {
       name: "Tetova Sapanca",
-      avatar: "/images/bungalows/platin-villa/1.jpeg",
+      avatar: "/images/blog/sapanca-lake.jpg",
     },
-    coverImage: "/images/bungalows/platin-villa/5.jpeg",
+    coverImage: "/images/blog/sapanca-lake.jpg",
     content: `
       <p>Marmara Bölgesi'nin en büyüleyici doğa kaçış noktalarından biri olan <strong>Sapanca</strong>, hem İstanbul'a hem de Kocaeli'ye yakınlığıyla hafta sonu tatillerinin vazgeçilmez rotası haline gelmiştir. Yeşilin her tonunu barındıran ormanları, durgun göl manzarası ve lüks konaklama seçenekleriyle unutulmaz bir deneyim sunmaktadır.</p>
       
@@ -58,9 +58,9 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
     date: "18 Temmuz 2026",
     author: {
       name: "Tetova Sapanca",
-      avatar: "/images/bungalows/gold-bungalov/1.jpeg",
+      avatar: "/images/blog/heated-pool-lifestyle.jpg",
     },
-    coverImage: "/images/bungalows/gold-bungalov/3.jpeg",
+    coverImage: "/images/blog/heated-pool-lifestyle.jpg",
     content: `
       <p>Bungalov tatili denince akla ilk gelen konfor öğelerinden biri hiç şüphesiz <strong>özel ısıtmalı açık hava havuzlarıdır</strong>. Dört mevsim boyunca kesintisiz kullanılan bu sistemler, özellikle kış aylarında kar yağışını izlerken havuz keyfi yapma imkanı tanır.</p>
 
@@ -73,7 +73,7 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
       <h2>Bungalov Tatilinde Yanınıza Almanız Gerekenler</h2>
       <ul>
         <li>Bornoz ve yumuşak plaj havlusu (Havuz çıkışı için)</li>
-        <li>Şömine başında okumak için sevdiğiniz kitaplar</li>
+        <li>Ateş çukuru başında okumak için sevdiğiniz kitaplar</li>
         <li>Açık hava sineması için mısır ve sıcak çikolata malzemeleri</li>
       </ul>
     `,
@@ -88,9 +88,9 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
     date: "12 Temmuz 2026",
     author: {
       name: "Tetova Sapanca",
-      avatar: "/images/bungalows/silver-bungalov/1.jpeg",
+      avatar: "/images/blog/yoresel-kahvalti.jpg",
     },
-    coverImage: "/images/bungalows/silver-bungalov/3.jpeg",
+    coverImage: "/images/blog/yoresel-kahvalti.jpg",
     content: `
       <p>Sapanca sadece doğasıyla değil, zengin mutfak kültürü ve zengin serpme kahvaltı mekanlarıyla da gurmelerin ilgisini çekmektedir.</p>
 

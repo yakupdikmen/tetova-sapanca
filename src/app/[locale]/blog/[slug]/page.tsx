@@ -100,16 +100,10 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
               {post.title}
             </h1>
 
-            {/* Author Bar */}
+            {/* TS Avatar Badge */}
             <div className="flex items-center gap-3 pt-4 border-t border-amber-900/10 dark:border-white/10">
-              <img
-                src={post.author.avatar}
-                alt={post.author.name}
-                className="w-11 h-11 rounded-full object-cover border border-amber-900/15 dark:border-white/15 shadow-md"
-              />
-              <div>
-                <h4 className="text-sm font-bold text-stone-900 dark:text-white">{post.author.name}</h4>
-                <span className="text-xs text-stone-500 dark:text-stone-400">Tetova Sapanca Gezi Editörü</span>
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 border border-amber-400/40 text-white text-xs font-extrabold flex items-center justify-center shadow-md select-none">
+                TS
               </div>
             </div>
           </header>

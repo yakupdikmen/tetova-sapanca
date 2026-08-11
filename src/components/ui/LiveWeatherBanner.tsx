@@ -116,12 +116,12 @@ export const LiveWeatherBanner: React.FC<LiveWeatherBannerProps> = ({
 
   const getSubtext = () => {
     if (language === "ar") {
-      return isCoolOrRainy ? "استمتع بيوم لا يُنسى بجوار المسبح الدافئ والمدفأة المشتعلة." : "اكتشف خياراتنا المزودة بجاكوزي خارجي وحديقة واسعة.";
+      return isCoolOrRainy ? "استمتع بيوم لا يُنسى بجوار المسبح الدافئ وحفرة النار المشتعلة." : "اكتشف خياراتنا المزودة بحديقة واسعة ومرافق شواء.";
     }
     if (language === "en") {
-      return isCoolOrRainy ? "Enjoy an unforgettable day by the warm heated pool and crackling fireplace." : "Explore options featuring outdoor hot tubs, private gardens, and BBQ.";
+      return isCoolOrRainy ? "Enjoy an unforgettable day by the warm heated pool and crackling fire pit." : "Explore options featuring private gardens and BBQ.";
     }
-    return isCoolOrRainy ? "Sıcak kapalı havuz ve çıtırdayan şömine eşliğinde unutulmaz bir gün geçirin." : "Açık hava jakuzisi, geniş bahçe ve barbekü konseptli seçeneklerimizi keşfedin.";
+    return isCoolOrRainy ? "Sıcak kapalı havuz ve çıtırdayan ateş çukuru eşliğinde unutulmaz bir gün geçirin." : "Geniş bahçe ve barbekü konseptli seçeneklerimizi keşfedin.";
   };
 
   const getCtaText = () => {

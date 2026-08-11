@@ -8,7 +8,6 @@ import {
   Minimize2,
   Compass,
   ArrowRight,
-  Sparkles,
   MapPin,
   MoveHorizontal,
   Home,
@@ -58,7 +57,6 @@ export const InteractiveVirtualTour: React.FC<InteractiveVirtualTourProps> = ({
   const scenePresets = [
     { id: "veranda", label: t("tour.scenes.veranda"), icon: Home },
     { id: "havuz", label: t("tour.scenes.pool"), icon: Waves },
-    { id: "jakuzi", label: t("tour.scenes.jacuzzi"), icon: Sparkles },
     { id: "yatak-odasi", label: t("tour.scenes.bedroom"), icon: Bed },
   ];
 

@@ -15,11 +15,13 @@ const LANGUAGES: { code: Language; name: string; flag: string }[] = [
 export interface LanguageSwitcherProps {
   className?: string;
   variant?: "header" | "footer" | "mobile";
+  isScrolled?: boolean;
 }
 
 export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   className = "",
   variant = "header",
+  isScrolled = false,
 }) => {
   const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
@@ -42,20 +44,30 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
     setIsOpen(false);
   };
 
+  const isTransparentHeader = !isScrolled && variant === "header";
+
   return (
     <div ref={containerRef} className={`relative ${isOpen ? "z-50" : "z-20"} ${className}`}>
       {/* Trigger Button */}
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-stone-900/10 dark:bg-white/10 hover:bg-stone-900/20 dark:hover:bg-white/20 border border-black/5 dark:border-white/15 backdrop-blur-md text-stone-800 dark:text-white font-semibold text-xs sm:text-sm transition-all duration-200 shadow-sm cursor-pointer"
+        className={`inline-flex items-center gap-2 px-3 py-2 rounded-xl backdrop-blur-md font-semibold text-xs sm:text-sm transition-all duration-200 shadow-sm cursor-pointer border ${
+          isTransparentHeader
+            ? "bg-white/15 hover:bg-white/25 border-white/20 text-white"
+            : "bg-stone-900/10 hover:bg-stone-900/20 border-black/10 text-stone-900 dark:bg-white/10 dark:hover:bg-white/20 dark:border-white/15 dark:text-white"
+        }`}
         title="Dil Seçimi / Change Language"
       >
         <span className="text-base leading-none">{currentLangObj.flag}</span>
         <span className="uppercase tracking-wider font-bold text-xs">{currentLangObj.code}</span>
         <ChevronDown
-          className={`w-3.5 h-3.5 text-stone-500 dark:text-stone-400 transition-transform duration-200 ${
-            isOpen ? "rotate-180 text-amber-500" : ""
+          className={`w-3.5 h-3.5 transition-transform duration-200 ${
+            isOpen
+              ? "rotate-180 text-amber-500"
+              : isTransparentHeader
+              ? "text-white/80"
+              : "text-stone-600 dark:text-stone-300"
           }`}
         />
       </button>

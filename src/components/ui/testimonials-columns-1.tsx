@@ -4,6 +4,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Star, Quote, CheckCircle2 } from "lucide-react";
 
+import { maskName } from "@/utils/format";
+
 export interface Testimonial {
   text: string;
   image: string;
@@ -20,25 +22,14 @@ export interface TestimonialsColumnProps {
   className?: string;
 }
 
-const AuthorAvatar: React.FC<{ src?: string; name: string }> = ({ src, name }) => {
-  const [hasError, setHasError] = React.useState(false);
-  const initial = name ? name.trim().charAt(0).toUpperCase() : "G";
-
-  if (!src || hasError) {
-    return (
-      <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-600 to-orange-500 text-white font-extrabold text-sm flex items-center justify-center border border-amber-900/10 dark:border-white/20 shadow-md flex-shrink-0">
-        {initial}
-      </div>
-    );
-  }
+const AuthorAvatar: React.FC<{ name: string }> = ({ name }) => {
+  const cleanName = name ? name.trim().replace(/^[^a-zA-ZçğıöşüÇĞİÖŞÜ]+/, "") : "";
+  const initial = cleanName.length > 0 ? cleanName.charAt(0).toUpperCase() : "G";
 
   return (
-    <img
-      src={src}
-      alt={name}
-      onError={() => setHasError(true)}
-      className="w-10 h-10 rounded-full object-cover border border-amber-900/10 dark:border-white/15 shadow-md flex-shrink-0"
-    />
+    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-600 via-amber-500 to-orange-500 text-white font-extrabold text-sm flex items-center justify-center border border-amber-900/10 dark:border-white/20 shadow-md flex-shrink-0 select-none">
+      {initial}
+    </div>
   );
 };
 
@@ -64,6 +55,10 @@ export const TestimonialsColumn: React.FC<TestimonialsColumnProps> = ({
           animation: `marqueeVertical ${duration}s linear infinite`,
           animationPlayState: isPaused ? "paused" : "running",
           willChange: "transform",
+          transform: "translateZ(0)",
+          WebkitTransform: "translateZ(0)",
+          backfaceVisibility: "hidden",
+          WebkitBackfaceVisibility: "hidden",
         }}
         className="flex flex-col gap-6"
       >
@@ -96,11 +91,11 @@ export const TestimonialsColumn: React.FC<TestimonialsColumnProps> = ({
             {/* Author Footer */}
             <div className="flex items-center justify-between pt-4 border-t border-amber-900/10 dark:border-white/10 mt-auto">
               <div className="flex items-center gap-3">
-                <AuthorAvatar src={item.image} name={item.name} />
+                <AuthorAvatar name={item.name} />
                 <div>
                   <div className="flex items-center gap-1.5">
                     <h4 className="text-sm font-bold text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors">
-                      {item.name}
+                      {maskName(item.name)}
                     </h4>
                     {item.verified !== false && (
                       <CheckCircle2 className="w-4 h-4 text-amber-600 dark:text-amber-400 fill-amber-500/20" />

@@ -16,7 +16,7 @@ export const translations = {
       badge: "Sapanca'nın En Seçkin Lüks Bungalovları",
       titleLine1: "Doğanın Kalbinde,",
       titleLine2: "Unutulmaz Bir Lüks Tatil",
-      subtitle: "Özel ısıtmalı havuzlu, jakuzili ve panoramik göl manzaralı VIP bungalovlarda kendinize ve sevdiklerinize hak ettiğiniz konforu sunun.",
+      subtitle: "Özel ısıtmalı havuzlu, panoramik göl manzaralı bungalovlarda kendinize ve sevdiklerinize hak ettiğiniz konforu sunun.",
       accommodationType: "Konaklama Türü",
       allTypes: "Tüm Kategori Türleri",
       checkIn: "Giriş Tarihi",
@@ -24,7 +24,7 @@ export const translations = {
       askWhatsapp: "WhatsApp ile Müsaitlik Sor",
       virtualTour: "360° Sanal Tur",
       weatherTitle: "CANLI SAPANCA HAVA DURUMU",
-      weatherNotice: "Açık hava jakuzisi, geniş bahçe ve barbekü konseptli seçeneklerimizi keşfedin.",
+      weatherNotice: "Açık havuzumuz ve geniş bahçe alanlarımızla konforu keşfedin.",
       exploreSuites: "Bahçeli Suite'leri İncele",
     },
     datePicker: {
@@ -43,7 +43,7 @@ export const translations = {
       badge: "VIP KONAKLAMA SEÇENEKLERİ",
       title: "Sapanca'nın En Lüks",
       titleGradient: "Bungalov Koleksiyonu",
-      subtitle: "Özel ısıtmalı havuzlar, açık hava jakuzileri ve panoramik doğa manzarası eşliğinde hayalinizdeki tatili keşfedin.",
+      subtitle: "Özel ısıtmalı havuzlar, açık havuzumuz ve panoramik doğa manzarası eşliğinde hayalinizdeki tatili keşfedin.",
       featuredBadge: "ÖNE ÇIKAN VIP",
       guests: "Misafir",
       viewDetails: "Detayları İncele",
@@ -83,8 +83,8 @@ export const translations = {
           desc: "Tamamen korunaklı, dışarıdan görünmeyen yüksek çitlerle çevrili özel çim bahçeler.",
         },
         {
-          title: "VIP Jakuzi & Odun Şöminesi",
-          desc: "Tüm bungalovlarımızda hidro-masajlı özel jakuzi ve meşe odunu hazırlıklı şömine.",
+          title: "Özel Ateş Çukuru",
+          desc: "Tüm bungalovlarımızda sıcacık, keyifli özel ateş çukuru alanı.",
         },
         {
           title: "7/24 Kesintisiz Resepsiyon",
@@ -130,7 +130,7 @@ export const translations = {
       minRead: "dk okuma",
     },
     footer: {
-      description: "Sapanca Gölü ve Kırkpınar ormanlarının kucağında, 4 mevsim sıcak ısıtmalı özel havuzları ve jakuzileri ile ayrıcalıklı konaklama deneyimi.",
+      description: "Sapanca Gölü ve Kırkpınar ormanlarının kucağında, 4 mevsim sıcak ısıtmalı özel havuzları ile ayrıcalıklı konaklama deneyimi.",
       quickLinks: "Hızlı Bağlantılar",
       bungalowsTitle: "Bungalov Modellerimiz",
       contactTitle: "İletişim & Konum",
@@ -142,7 +142,6 @@ export const translations = {
       scenes: {
         veranda: "Veranda & Bahçe",
         pool: "Isıtmalı Havuz",
-        jacuzzi: "Jakuzi Suite",
         bedroom: "Yatak Odası & Loft",
       },
       fullscreen: "Tam Ekran Modu",
@@ -152,7 +151,7 @@ export const translations = {
     },
     seo: {
       pageTitle: "Tetova Sapanca | Lüks Isıtmalı Havuzlu VIP Bungalovlar",
-      metaDescription: "Sapanca Kırkpınar'da 4 mevsim ısıtmalı özel havuzlu, jakuzili, şömineli ve korumalı bahçeli VIP bungalov konaklama deneyimi. Hemen WhatsApp ile rezervasyon yapın.",
+      metaDescription: "Sapanca Kırkpınar'da 4 mevsim ısıtmalı özel havuzlu, ateş çukurlu ve korumalı bahçeli VIP bungalov konaklama deneyimi. Hemen WhatsApp ile rezervasyon yapın.",
     },
   },
   en: {
@@ -168,7 +167,7 @@ export const translations = {
       badge: "Sapanca's Most Exclusive Luxury Bungalows",
       titleLine1: "In the Heart of Nature,",
       titleLine2: "An Unforgettable Luxury Holiday",
-      subtitle: "Experience the ultimate comfort you deserve in VIP bungalows featuring private heated pools, hot tubs, and panoramic lake views.",
+      subtitle: "Experience the ultimate comfort you deserve in VIP bungalows featuring private heated pools and panoramic lake views.",
       accommodationType: "Accommodation Type",
       allTypes: "All Categories",
       checkIn: "Check-in Date",
@@ -176,7 +175,7 @@ export const translations = {
       askWhatsapp: "Check Availability via WhatsApp",
       virtualTour: "360° Virtual Tour",
       weatherTitle: "LIVE SAPANCA WEATHER",
-      weatherNotice: "Explore our options with outdoor hot tubs, spacious gardens, and BBQ concepts.",
+      weatherNotice: "Explore our options with spacious gardens and BBQ concepts.",
       exploreSuites: "Explore Garden Suites",
     },
     datePicker: {
@@ -195,7 +194,7 @@ export const translations = {
       badge: "VIP ACCOMMODATION OPTIONS",
       title: "Sapanca's Most Luxurious",
       titleGradient: "Bungalow Collection",
-      subtitle: "Discover your dream vacation accompanied by private heated pools, outdoor hot tubs, and panoramic nature views.",
+      subtitle: "Discover your dream vacation accompanied by private heated pools and panoramic nature views.",
       featuredBadge: "FEATURED VIP",
       guests: "Guests",
       viewDetails: "View Details",
@@ -235,8 +234,8 @@ export const translations = {
           desc: "Private green lawns enclosed by high privacy fences, ensuring complete confidentiality.",
         },
         {
-          title: "VIP Hot Tub & Fireplace",
-          desc: "Hydro-massage hot tubs and oak-wood fireplaces ready in all our bungalows.",
+          title: "Private Fire Pit",
+          desc: "Cozy private fire pits ready in all our bungalows.",
         },
         {
           title: "24/7 Reception Support",
@@ -282,7 +281,7 @@ export const translations = {
       minRead: "min read",
     },
     footer: {
-      description: "Exclusive accommodation experience surrounded by Sapanca Lake and Kırkpınar forests, featuring 4-season heated pools and private hot tubs.",
+      description: "Exclusive accommodation experience surrounded by Sapanca Lake and Kırkpınar forests, featuring 4-season heated pools.",
       quickLinks: "Quick Links",
       bungalowsTitle: "Bungalow Models",
       contactTitle: "Contact & Location",
@@ -294,7 +293,6 @@ export const translations = {
       scenes: {
         veranda: "Veranda & Garden",
         pool: "Heated Pool",
-        jacuzzi: "Jacuzzi Suite",
         bedroom: "Bedroom & Loft",
       },
       fullscreen: "Fullscreen Mode",
@@ -304,7 +302,7 @@ export const translations = {
     },
     seo: {
       pageTitle: "Tetova Sapanca | Luxury VIP Heated Pool Bungalows",
-      metaDescription: "VIP bungalow accommodation in Sapanca Kırkpınar featuring 4-season heated private pools, hot tubs, fireplaces, and secluded gardens. Book via WhatsApp now.",
+      metaDescription: "VIP bungalow accommodation in Sapanca Kırkpınar featuring 4-season heated private pools, fire pits, and secluded gardens. Book via WhatsApp now.",
     },
   },
   ar: {
@@ -320,7 +318,7 @@ export const translations = {
       badge: "أفخم البنغلات الراقية في صبانجة",
       titleLine1: "في قلب الطبيعة،",
       titleLine2: "عطلة فاخرة لا تُنسى",
-      subtitle: "استمتع بأقصى درجات الراحة في بنغلات كبار الشخصيات مع مسبح خاص دافئ، وجاكوزي، وإطلالة بانورامية على البحيرة.",
+      subtitle: "استمتع بأقصى درجات الراحة في بنغلات كبار الشخصيات مع مسبح خاص دافئ، وإطلالة بانورامية على البحيرة.",
       accommodationType: "نوع الإقامة",
       allTypes: "جميع الفئات",
       checkIn: "تاريخ الوصول",
@@ -328,7 +326,7 @@ export const translations = {
       askWhatsapp: "استفسر عن التوفر عبر واتساب",
       virtualTour: "جولة افتراضية 360°",
       weatherTitle: "طقس صبانجة المباشر",
-      weatherNotice: "اكتشف خياراتنا المزودة بجاكوزي خارجي، وحديقة واسعة ومرافق الشواء.",
+      weatherNotice: "اكتشف خياراتنا المزودة بحديقة واسعة ومرافق الشواء.",
       exploreSuites: "استكشف أجنحة الحديقة",
     },
     datePicker: {
@@ -347,7 +345,7 @@ export const translations = {
       badge: "خيارات إقامة كبار الشخصيات",
       title: "أفخم مجموعة بنغلات",
       titleGradient: "في صبانجة",
-      subtitle: "اكتشف عطلة أحلامك المزودة بمسابح خاصة دافئة، وجاكوزي خارجي وإطلالات طبيعية ساحرة.",
+      subtitle: "اكتشف عطلة أحلامك المزودة بمسابح خاصة دافئة وإطلالات طبيعية ساحرة.",
       featuredBadge: "VIP مميز",
       guests: "ضيوف",
       viewDetails: "عرض التفاصيل",
@@ -387,8 +385,8 @@ export const translations = {
           desc: "حدائق خضراء خاصة محاطة بأسوار عالية تضمن الخصوصية التامة والاستقلالية.",
         },
         {
-          title: "جاكوزي VIP ومدفأة حطب",
-          desc: "جاكوزي خاص مجهز بنظام المساج المائي ومدفأة بحطب البلوط في جميع بنغلاتنا.",
+          title: "حفرة نار خاصة",
+          desc: "حفرة نار دافئة في جميع بنغلاتنا لأمسيات شتوية رومانسية.",
         },
         {
           title: "دعم الاستقبال على مدار 24/7",
@@ -434,7 +432,7 @@ export const translations = {
       minRead: "دقائق قراءة",
     },
     footer: {
-      description: "تجربة إقامة فاخرة بين بحيرة صبانجة وغابات كيركبينار، تتميز بمسابح دافئة على مدار العام وجاكوزي خاص.",
+      description: "تجربة إقامة فاخرة بين بحيرة صبانجة وغابات كيركبينار، تتميز بمسابح دافئة على مدار العام.",
       quickLinks: "روابط سريعة",
       bungalowsTitle: "نماذج البنغلات",
       contactTitle: "الاتصال والموقع",
@@ -446,7 +444,6 @@ export const translations = {
       scenes: {
         veranda: "الشرفة والحديقة",
         pool: "المسبح الدافئ",
-        jacuzzi: "جناح الجاكوزي",
         bedroom: "غرفة النوم والغرفة العلوية",
       },
       fullscreen: "وضع الشاشة الكاملة",
@@ -456,7 +453,7 @@ export const translations = {
     },
     seo: {
       pageTitle: "تيتوفا صبانجة | بنغلات VIP فاخرة بمسابح دافئة",
-      metaDescription: "تجربة إقامة في بنغلات فاخرة بصبانجة كيركبينار مع مسابح خاصة دافئة، وجاكوزي، ومدفأة وحدائق مستورة. احجز عبر واتساب الآن.",
+      metaDescription: "تجربة إقامة في بنغلات فاخرة بصبانجة كيركبينار مع مسابح خاصة دافئة، وحفرة نار وحدائق مستورة. احجز عبر واتساب الآن.",
     },
   },
 };

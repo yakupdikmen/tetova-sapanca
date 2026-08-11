@@ -20,9 +20,9 @@ const BUNGALOW_FAN_CARDS: SocialCardItem[] = [
   {
     id: "fan-2",
     title: "Gold Bungalov Suite",
-    subtitle: "Orman manzaralı açık hava hidro-masaj jakuzisi",
+    subtitle: "Orman manzaralı ısıtmalı açık havuz keyfi",
     image: "/images/bungalows/gold-bungalov/1.jpeg",
-    tag: "Jakuzi Suite",
+    tag: "Havuz Suite",
     likes: 980,
   },
   {

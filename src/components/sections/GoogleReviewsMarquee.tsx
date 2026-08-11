@@ -155,9 +155,9 @@ export const GoogleReviewsMarquee: React.FC<GoogleReviewsMarqueeProps> = ({
           <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#FAF8F5] dark:from-stone-950 to-transparent z-20 pointer-events-none" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <TestimonialsColumn testimonials={col1} duration={16} />
-            <TestimonialsColumn testimonials={col2} duration={20} className="hidden md:block" />
-            <TestimonialsColumn testimonials={col3} duration={17} className="hidden lg:block" />
+            <TestimonialsColumn testimonials={col1} duration={45} />
+            <TestimonialsColumn testimonials={col2} duration={55} className="hidden md:block" />
+            <TestimonialsColumn testimonials={col3} duration={48} className="hidden lg:block" />
           </div>
         </div>
       </div>

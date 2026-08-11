@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
@@ -98,7 +99,6 @@ function buildLodgingBusinessJsonLd(locale: Locale) {
     sameAs: ["https://www.instagram.com/tetovasapanca/"],
     amenityFeature: [
       { "@type": "LocationFeatureSpecification", name: "Isıtmalı Özel Havuz", value: true },
-      { "@type": "LocationFeatureSpecification", name: "Jakuzi", value: true },
       { "@type": "LocationFeatureSpecification", name: "Özel Bahçe", value: true },
     ],
   };
@@ -139,14 +139,16 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        <script
+        <Script
           id="lodging-business-jsonld"
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(buildLodgingBusinessJsonLd(locale)) }}
         />
-        <script
+        <Script
           id="faq-jsonld"
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       </head>

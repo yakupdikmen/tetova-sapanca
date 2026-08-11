@@ -62,15 +62,15 @@ export const BungalowCard: React.FC<BungalowCardProps> = ({
 
   const getLocalizedTagline = () => {
     if (language === "ar") {
-      if (bungalow.id === "platin-villa") return "فيلا مالك فاخرة بمسابح دافئة على مدار الفصول وجاكوزي ومدفأة حطب";
-      if (bungalow.id === "gold-bungalov") return "بنغل ذهبي بمسبح دافئ وإطلالة بانورامية وجاكوزي خاص";
-      if (bungalow.id === "silver-bungalov") return "بنغل فضي مريح بجاكوزي خاص وشرفة في أحضان الطبيعة";
+      if (bungalow.id === "platin-villa") return "فيلا مالك فاخرة بمسابح دافئة على مدار الفصول وحفرة نار خاصة";
+      if (bungalow.id === "gold-bungalov") return "بنغل ذهبي بمسبح دافئ وإطلالة بانورامية";
+      if (bungalow.id === "silver-bungalov") return "بنغل فضي مريح بشرفة في أحضان الطبيعة";
       if (bungalow.id === "bronz-bungalov") return "بنغل برونزي دافئ بحديقة خاصة وموقد نار ومواقف سيارات";
     }
     if (language === "en") {
-      if (bungalow.id === "platin-villa") return "Tetova Sapanca's Most Exclusive VIP Mansion Villa with Heated Pool & Hot Tub";
+      if (bungalow.id === "platin-villa") return "Tetova Sapanca's Most Exclusive VIP Mansion Villa with Heated Pool";
       if (bungalow.id === "gold-bungalov") return "Gold Concept Bungalow with Heated Pool & Panoramic Nature Views";
-      if (bungalow.id === "silver-bungalov") return "Silver Concept Bungalow with Private Hot Tub & Nature Terrace";
+      if (bungalow.id === "silver-bungalov") return "Silver Concept Bungalow with Nature Terrace";
       if (bungalow.id === "bronz-bungalov") return "Cozy & Warm Nature Concept Bronz Bungalow with Private Garden & BBQ";
     }
     return bungalow.tagline;

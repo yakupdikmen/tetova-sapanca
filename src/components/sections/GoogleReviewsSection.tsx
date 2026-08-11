@@ -5,6 +5,8 @@ import { motion, Variants } from "framer-motion";
 import { Star, ExternalLink, Quote, CheckCircle2, Sparkles } from "lucide-react";
 import { GoogleReview, GOOGLE_REVIEWS } from "@/constants/reviews";
 
+import { maskName } from "@/utils/format";
+
 export interface ReviewCardProps {
   review: GoogleReview;
   className?: string;
@@ -40,6 +42,17 @@ const cardVariants: Variants = {
   },
 };
 
+const ReviewAuthorAvatar: React.FC<{ name: string }> = ({ name }) => {
+  const cleanName = name ? name.trim().replace(/^[^a-zA-ZçğıöşüÇĞİÖŞÜ]+/, "") : "";
+  const initial = cleanName.length > 0 ? cleanName.charAt(0).toUpperCase() : "G";
+
+  return (
+    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-600 via-amber-500 to-orange-500 text-white font-extrabold text-sm flex items-center justify-center border border-amber-900/10 dark:border-white/20 shadow-md flex-shrink-0 select-none">
+      {initial}
+    </div>
+  );
+};
+
 export const ReviewCard: React.FC<ReviewCardProps> = ({ review, className = "" }) => {
   return (
     <motion.div
@@ -72,15 +85,11 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ review, className = "" }
       {/* Author Details Footer */}
       <div className="flex items-center justify-between pt-4 border-t border-amber-900/10 dark:border-white/10 mt-auto">
         <div className="flex items-center gap-3">
-          <img
-            src={review.authorAvatar}
-            alt={review.authorName}
-            className="w-10 h-10 rounded-full object-cover border border-amber-900/10 dark:border-white/15 shadow-md"
-          />
+          <ReviewAuthorAvatar name={review.authorName} />
           <div>
             <div className="flex items-center gap-1.5">
               <h4 className="text-sm font-bold text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors">
-                {review.authorName}
+                {maskName(review.authorName)}
               </h4>
               {review.verified && (
                 <CheckCircle2 className="w-4 h-4 text-amber-600 dark:text-amber-400 fill-amber-500/20" />

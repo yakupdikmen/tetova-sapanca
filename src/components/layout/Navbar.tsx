@@ -95,7 +95,7 @@ export const Navbar: React.FC = () => {
 
         {/* Right CTA Button, Language Switcher & Theme Toggle */}
         <div className="hidden md:flex items-center gap-3">
-          <LanguageSwitcher />
+          <LanguageSwitcher isScrolled={isScrolled} />
           <ThemeToggle />
 
           <a
@@ -114,7 +114,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Menu Toggle, Language Switcher & Theme Toggle */}
         <div className="flex md:hidden items-center gap-2">
-          <LanguageSwitcher />
+          <LanguageSwitcher isScrolled={isScrolled} />
           <ThemeToggle />
 
           <button

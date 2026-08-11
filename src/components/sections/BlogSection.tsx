@@ -100,17 +100,10 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, className = "" }) => {
         </div>
       </div>
 
-      {/* Footer: Author Details + Read Button */}
+      {/* Footer: TS Avatar + Read Button */}
       <div className="px-6 pb-6 pt-3 flex items-center justify-between border-t border-amber-900/10 dark:border-white/10 mt-auto">
-        <div className="flex items-center gap-2.5">
-          <img
-            src={post.author.avatar}
-            alt={post.author.name}
-            className="w-8 h-8 rounded-full object-cover border border-amber-900/10 dark:border-white/15 shadow-sm"
-          />
-          <span className="text-xs font-medium text-stone-700 dark:text-stone-300">
-            {post.author.name}
-          </span>
+        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 border border-amber-400/40 text-white text-[11px] font-extrabold flex items-center justify-center shadow-sm select-none">
+          TS
         </div>
 
         <Link

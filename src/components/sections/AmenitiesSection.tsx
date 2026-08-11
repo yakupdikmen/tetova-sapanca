@@ -16,7 +16,7 @@ import {
   Wind,
   LucideIcon,
 } from "lucide-react";
-import { LUXURY_AMENITIES, LuxuryAmenity } from "@/constants/amenities";
+import { LuxuryAmenity } from "@/constants/amenities";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export interface AmenityCardProps {
@@ -122,8 +122,8 @@ export const AmenitiesSection: React.FC<AmenitiesSectionProps> = () => {
       desc: "Tamamen korunaklı, dışarıdan görünmeyen yüksek çitlerle çevrili özel çim bahçeler.",
     },
     {
-      title: "VIP Jakuzi & Odun Şöminesi",
-      desc: "Tüm bungalovlarımızda hidro-masajlı özel jakuzi ve meşe odunu hazırlıklı şömine.",
+      title: "Özel Ateş Çukuru",
+      desc: "Tüm bungalovlarımızda sıcacık, keyifli özel ateş çukuru alanı.",
     },
     {
       title: "7/24 Kesintisiz Resepsiyon",

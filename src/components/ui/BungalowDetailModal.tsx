@@ -61,7 +61,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
     }
   }, [selectedBungalow]);
 
-  // Lock body scroll & listen for Escape key press with reliable cleanup
+  // Lock body scroll & listen for Escape / Arrow keys with reliable cleanup
   useEffect(() => {
     if (isOpen && selectedBungalow) {
       document.body.style.overflow = "hidden";
@@ -70,8 +70,13 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
+      if (!isOpen) return;
+      if (e.key === "Escape") {
         onClose();
+      } else if (e.key === "ArrowLeft") {
+        setActiveIndex((prev) => (prev > 0 ? prev - 1 : (dynamicGallery.length > 0 ? dynamicGallery.length - 1 : 0)));
+      } else if (e.key === "ArrowRight") {
+        setActiveIndex((prev) => (prev < (dynamicGallery.length > 0 ? dynamicGallery.length - 1 : 0) ? prev + 1 : 0));
       }
     };
 
@@ -81,7 +86,7 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
       document.body.style.overflow = "unset";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen, selectedBungalow, onClose]);
+  }, [isOpen, selectedBungalow, dynamicGallery.length, onClose]);
 
   if (!isOpen || !selectedBungalow) return null;
 
@@ -95,15 +100,15 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
 
   const getLocalizedTagline = () => {
     if (language === "ar") {
-      if (selectedBungalow.id === "platin-villa") return "فيلا مالك فاخرة بمسابح دافئة على مدار الفصول وجاكوزي ومدفأة حطب";
-      if (selectedBungalow.id === "gold-bungalov") return "بنغل ذهبي بمسبح دافئ وإطلالة بانورامية وجاكوزي خاص";
-      if (selectedBungalow.id === "silver-bungalov") return "بنغل فضي مريح بجاكوزي خاص وشرفة في أحضان الطبيعة";
+      if (selectedBungalow.id === "platin-villa") return "فيلا مالك فاخرة بمسابح دافئة على مدار الفصول وحفرة نار خاصة";
+      if (selectedBungalow.id === "gold-bungalov") return "بنغل ذهبي بمسبح دافئ وإطلالة بانورامية";
+      if (selectedBungalow.id === "silver-bungalov") return "بنغل فضي مريح بشرفة في أحضان الطبيعة";
       if (selectedBungalow.id === "bronz-bungalov") return "بنغل برونزي دافئ بحديقة خاصة وموقد نار ومواقف سيارات";
     }
     if (language === "en") {
-      if (selectedBungalow.id === "platin-villa") return "Tetova Sapanca's Most Exclusive VIP Mansion Villa with Heated Pool & Hot Tub";
+      if (selectedBungalow.id === "platin-villa") return "Tetova Sapanca's Most Exclusive VIP Mansion Villa with Heated Pool";
       if (selectedBungalow.id === "gold-bungalov") return "Gold Concept Bungalow with Heated Pool & Panoramic Nature Views";
-      if (selectedBungalow.id === "silver-bungalov") return "Silver Concept Bungalow with Private Hot Tub & Nature Terrace";
+      if (selectedBungalow.id === "silver-bungalov") return "Silver Concept Bungalow with Nature Terrace";
       if (selectedBungalow.id === "bronz-bungalov") return "Cozy & Warm Nature Concept Bronz Bungalow with Private Garden & BBQ";
     }
     return selectedBungalow.tagline;
@@ -204,14 +209,40 @@ export const BungalowDetailModal: React.FC<BungalowDetailModalProps> = ({
               </motion.button>
             </div>
 
-            {/* Center Section: Embedded Card Fan Carousel with Synced State */}
-            <div className="py-2 sm:py-4">
+            {/* Center Section: Embedded Card Fan Carousel with Floating Slider Arrows */}
+            <div className="relative py-2 sm:py-4 flex items-center justify-center">
+              {/* Left Slider Arrow Button */}
+              <motion.button
+                type="button"
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.9 }}
+                transition={SPRING_TRANSITION}
+                onClick={handlePrev}
+                className="absolute left-1 sm:left-4 z-40 w-11 sm:w-13 h-11 sm:h-13 rounded-full bg-stone-950/80 border border-white/20 text-white hover:bg-amber-500 hover:border-amber-400 hover:text-white flex items-center justify-center backdrop-blur-xl shadow-[0_10px_25px_rgba(0,0,0,0.7)] transition-all duration-300 cursor-pointer"
+                aria-label="Önceki Fotoğraf"
+              >
+                <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 rtl:rotate-180" />
+              </motion.button>
+
               <SocialCards
                 cards={fanCards}
                 activeIndex={activeIndex}
                 onIndexChange={(idx) => setActiveIndex(idx)}
                 className="min-h-[340px] sm:min-h-[400px]"
               />
+
+              {/* Right Slider Arrow Button */}
+              <motion.button
+                type="button"
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.9 }}
+                transition={SPRING_TRANSITION}
+                onClick={handleNext}
+                className="absolute right-1 sm:right-4 z-40 w-11 sm:w-13 h-11 sm:h-13 rounded-full bg-stone-950/80 border border-white/20 text-white hover:bg-amber-500 hover:border-amber-400 hover:text-white flex items-center justify-center backdrop-blur-xl shadow-[0_10px_25px_rgba(0,0,0,0.7)] transition-all duration-300 cursor-pointer"
+                aria-label="Sonraki Fotoğraf"
+              >
+                <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 rtl:rotate-180" />
+              </motion.button>
             </div>
 
             {/* Bottom Thumbnail Navigation Bar, Chevrons & Pagination */}

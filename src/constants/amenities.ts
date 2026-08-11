@@ -17,9 +17,9 @@ export const LUXURY_AMENITIES: AmenityItem[] = [
     highlightTag: "4 Mevsim Kiralama",
   },
   {
-    id: "jacuzzi-fireplace",
-    title: "Özel Jakuzi & Şömine Keyfi",
-    description: "Romantik akşamlar için tasarlanmış açık/kapalı hidro-masajlı jakuziler ve odun kokulu sıcacık şömineler.",
+    id: "fire-pit",
+    title: "Özel Ateş Çukuru Keyfi",
+    description: "Romantik akşamlar için tasarlanmış sıcacık ateş çukurları tüm bungalovlarımızda sizi bekliyor.",
     iconName: "Flame",
     highlightTag: "Romantik VIP Konsept",
   },
@@ -29,13 +29,6 @@ export const LUXURY_AMENITIES: AmenityItem[] = [
     description: "Sapanca Gölü'nün panoramik maviliğine ve çam ormanlarının huzur veren yeşiline uyanacağınız muazzam konum.",
     iconName: "Trees",
     highlightTag: "Eşsiz Panoramik Manzara",
-  },
-  {
-    id: "gourmet-breakfast",
-    title: "Gurme Serpme Kahvaltı",
-    description: "Yöresel Organik Sapanca lezzetleriyle hazırlanan zengin serpme kahvaltınız her sabah kapınıza kadar servis edilir.",
-    iconName: "Coffee",
-    highlightTag: "Özel İkram Hizmeti",
   },
   {
     id: "high-speed-wifi",
